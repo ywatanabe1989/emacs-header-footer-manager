@@ -1,13 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 19:53:45>
-;;; File: /home/ywatanabe/proj/elisp-header-footer/ehf-tex.el
+;;; Timestamp: <2025-02-11 23:33:17>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-tex.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
-
-(defconst --ehf-tex-header-template
-  "%% -*- coding: utf-8 -*-\n%% Timestamp: \"%s (%s)\"\n%% File: %s")
 
 (defconst --ehf-tex-header-pattern
   "\\(%% -\\*-.*-\\*-\n%% Timestamp:.*\n%% File:.*$\\)")
@@ -18,16 +15,15 @@
 (defconst --ehf-tex-footer-pattern
   "\\(^%% EOF\\)\\s-*$")
 
+(defconst --ehf-tex-header-template
+  "%%%% -*- coding: utf-8 -*-\n%%%% Timestamp: \"%s (%s)\"\n%%%% File: %s")
+
 (defun --ehf-tex-format-header
-    (&optional file-path)
-  "Format TeX header for FILE-PATH or current buffer's file."
-  (let
-      ((path
-        (or file-path buffer-file-name)))
-    (format --ehf-tex-header-template
-            (format-time-string "%Y-%m-%d %H:%M:%S")
-            (user-login-name)
-            path)))
+    (file-path)
+  (format --ehf-tex-header-template
+          (format-time-string "%Y-%m-%d %H:%M:%S")
+          (user-login-name)
+          file-path))
 
 (defun --ehf-tex-format-footer
     (&optional file-path)

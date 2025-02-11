@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 19:53:44>
-;;; File: /home/ywatanabe/proj/elisp-header-footer/ehf-yaml.el
+;;; Timestamp: <2025-02-11 23:50:19>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-yaml.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
@@ -10,13 +10,13 @@
   "# Timestamp: \"%s (%s)\"\n# File: %s")
 
 (defconst --ehf-yaml-header-pattern
-  "\\(# Timestamp:.*\n# File:.*$\\)")
+  "\\(^# Timestamp: \".* .* (.*)\"\n# File: .*$\\)")
 
 (defconst --ehf-yaml-footer-template
   "# EOF")
 
 (defconst --ehf-yaml-footer-pattern
-  "\\(# EOF\\)\\s-*$")
+  "\\(^# EOF\\)\\s-*$")
 
 (defun --ehf-yaml-format-header
     (&optional file-path)
@@ -51,21 +51,45 @@
    file-path
    n-newlines))
 
+;; (defun --ehf-yaml-remove-headers
+;;     (&optional file-path)
+;;   "Remove YAML headers for FILE-PATH or current buffer's file."
+;;   (--ehf-base-remove-headers
+;;    --ehf-yaml-header-pattern
+;;    "yaml"
+;;    file-path))
+
+;; (defun --ehf-yaml-remove-footers
+;;     (&optional file-path)
+;;   "Remove YAML footers for FILE-PATH or current buffer's file."
+;;   (--ehf-base-remove-footers
+;;    --ehf-yaml-footer-pattern
+;;    "yaml"
+;;    file-path))
+
 (defun --ehf-yaml-remove-headers
     (&optional file-path)
   "Remove YAML headers for FILE-PATH or current buffer's file."
-  (--ehf-base-remove-headers
-   --ehf-yaml-header-pattern
-   "yaml"
-   file-path))
+  (let
+      ((ext
+        (file-name-extension
+         (or file-path buffer-file-name))))
+    (--ehf-base-remove-headers
+     --ehf-yaml-header-pattern
+     ext
+     file-path)))
 
 (defun --ehf-yaml-remove-footers
     (&optional file-path)
   "Remove YAML footers for FILE-PATH or current buffer's file."
-  (--ehf-base-remove-footers
-   --ehf-yaml-footer-pattern
-   "yaml"
-   file-path))
+  (let
+      ((ext
+        (file-name-extension
+         (or file-path buffer-file-name))))
+    (--ehf-base-remove-footers
+     --ehf-yaml-footer-pattern
+     ext
+     file-path)))
 
 (defun --ehf-yaml-update-header
     (&optional file-path n-newlines)

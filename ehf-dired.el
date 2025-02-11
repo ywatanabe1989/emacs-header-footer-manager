@@ -1,10 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 19:53:44>
-;;; File: /home/ywatanabe/proj/elisp-header-footer/ehf-dired.el
+;;; Timestamp: <2025-02-11 23:09:30>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-dired.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
-(require 'ehf-global-entry)
+(require 'ehf-main)
 
 ;; Main
 ;; ----------------------------------------
