@@ -1,4 +1,4 @@
-# Timestamp: "2025-02-11 23:59:05 (ywatanabe)"
+# Timestamp: "2025-02-12 00:02:47 (ywatanabe)"
 # File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/.github/workflows/test.yml
 
 name: CI
@@ -25,18 +25,18 @@ jobs:
       - uses: purcell/setup-emacs@master
         with:
           version: ${{ matrix.emacs_version }}
-
       - name: Install dependencies
         run: |
-          emacs -batch -l package --eval '(progn 
-            (add-to-list '\''package-archives '\''("melpa" . "https://melpa.org/packages/"))
-            (package-initialize)
-            (package-refresh-contents)
-            (package-install '\''projectile))'
-          
+          emacs -batch -l package \
+            --eval "(add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\") t)" \
+            --eval "(package-initialize)" \
+            --eval "(package-refresh-contents)" \
+            --eval "(package-install 'projectile)"
       - name: Run tests
         run: |
           emacs -batch -l ert \
+          -l package \
+          --eval "(require 'projectile)" \
           -l ehf-variables.el \
           -l ehf-base.el \
           -l ehf-registry.el \
