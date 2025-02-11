@@ -4,7 +4,7 @@
 !-- File: /home/ywatanabe/proj/elisp-header-footer/README.md
 !-- --- -->
 
-# Emacs Header Footer (EHF)
+# Emacs Header Footer Manager (EHF)
 
 Automatic header and footer management in Emacs.
 
