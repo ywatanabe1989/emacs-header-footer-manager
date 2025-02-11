@@ -1,0 +1,58 @@
+# Timestamp: "2025-02-11 23:53:51 (ywatanabe)"
+# File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/.github/workflows/test.yml
+
+name: CI
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        emacs_version:
+          - 27.1
+          - 27.2
+          - 28.1
+          - 28.2
+          - snapshot
+    steps:
+      - uses: actions/checkout@v3
+      - uses: purcell/setup-emacs@master
+        with:
+          version: ${{ matrix.emacs_version }}
+      - name: Run tests
+        run: |
+          emacs -batch -l ert \
+          -l ehf-variables.el \
+          -l ehf-base.el \
+          -l ehf-registry.el \
+          -l ehf-elisp.el \
+          -l ehf-markdown.el \
+          -l ehf-org.el \
+          -l ehf-python.el \
+          -l ehf-shell.el \
+          -l ehf-tex.el \
+          -l ehf-yaml.el \
+          -l ehf-main.el \
+          -l ehf-dired.el \
+          -l tests/test-ehf-base.el \
+          -l tests/test-ehf-dired.el \
+          -l tests/test-ehf.el \
+          -l tests/test-ehf-elisp.el \
+          -l tests/test-ehf-main.el \
+          -l tests/test-ehf-markdown.el \
+          -l tests/test-ehf-org.el \
+          -l tests/test-ehf-python.el \
+          -l tests/test-ehf-registry.el \
+          -l tests/test-ehf-shell.el \
+          -l tests/test-ehf-tex.el \
+          -l tests/test-ehf-variables.el \
+          -l tests/test-ehf-yaml.el \
+          -f ert-run-tests-batch-and-exit
+
+# EOF

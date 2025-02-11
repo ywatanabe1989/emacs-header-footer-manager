@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 19:53:44>
-;;; File: /home/ywatanabe/proj/elisp-header-footer/ehf-python.el
+;;; Timestamp: <2025-02-11 22:59:51>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-python.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'projectile)
@@ -11,7 +11,7 @@
   "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\n__file__ = \"%s\"")
 
 (defconst --ehf-python-header-pattern
-  "\\(#!.*\n# -\\*-.*-\\*-\n# Timestamp:.*\n# File:.*\n\n__file__.*$\\)")
+  "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\n__file__ = \".*\"$\\)")
 
 (defconst --ehf-python-footer-template
   "# EOF")
@@ -19,10 +19,20 @@
 (defconst --ehf-python-footer-pattern
   "\\(^# EOF$\\)\\s-*$")
 
-(defun --ehf-python-format-footer
+(defun --ehf-python-format-header
     (&optional file-path)
-  "Format Python footer for FILE-PATH or current buffer's file."
-  --ehf-python-footer-template)
+  "Format Python header for FILE-PATH or current buffer's file."
+  (let*
+      ((path
+        (or file-path buffer-file-name))
+       (git-path
+        (file-relative-name path
+                            (projectile-project-root))))
+    (format --ehf-python-header-template
+            (format-time-string "%Y-%m-%d %H:%M:%S")
+            (user-login-name)
+            path
+            git-path)))
 
 (defun --ehf-python-format-footer
     (&optional file-path)
@@ -98,8 +108,6 @@
             "py"))
     (--ehf-python-remove-footers file-path)
     (--ehf-python-insert-footer file-path n-newlines)))
-
-;; this does not work
 
 (defun --ehf-python-update-header-and-footer
     (&optional file-path n-newlines)

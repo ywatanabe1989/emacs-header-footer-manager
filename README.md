@@ -1,7 +1,7 @@
 <!-- ---
-!-- Timestamp: 2025-02-11 19:54:37
+!-- Timestamp: 2025-02-11 22:44:51
 !-- Author: ywatanabe
-!-- File: /home/ywatanabe/proj/elisp-header-footer/README.md
+!-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
 
 # Elisp Header Footer (EHF)
