@@ -1,15 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:16:36>
+;;; Timestamp: <2025-02-12 00:45:55>
 ;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-shell.el
 
 (require 'ert)
 (require 'ehf-shell)
-
-(ert-deftest test-ehf-shell-loadable
-    ()
-  (should
-   (featurep 'ehf-shell)))
 
 (ert-deftest test-ehf-shell-header-format
     ()

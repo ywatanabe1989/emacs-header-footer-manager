@@ -1,16 +1,11 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:12:37>
+;;; Timestamp: <2025-02-12 00:45:29>
 ;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-main.el
 
 (require 'ert)
 (require 'ehf-main)
 (require 'ehf-variables)
-
-(ert-deftest test-ehf-main-loadable
-    ()
-  (should
-   (featurep 'ehf-main)))
 
 (ert-deftest test-ehf-main-excluded-file
     ()

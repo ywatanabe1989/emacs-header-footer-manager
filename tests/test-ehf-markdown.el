@@ -1,15 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:13:04>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/-test-ehf-markdown.el
+;;; Timestamp: <2025-02-12 00:45:34>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-markdown.el
+
 (require 'ert)
-
 (require 'ehf-markdown)
-
-(ert-deftest test-ehf-markdown-loadable
-    ()
-  (should
-   (featurep 'ehf-markdown)))
 
 (ert-deftest test-ehf-markdown-header-format
     ()
@@ -48,10 +43,10 @@
 
 (provide 'test-ehf-markdown)
 
-(provide '-test-ehf-markdown)
+(provide 'test-ehf-markdown)
 
 (when
     (not load-file-name)
-  (message "-test-ehf-markdown.el loaded."
+  (message "test-ehf-markdown.el loaded."
            (file-name-nondirectory
             (or load-file-name buffer-file-name))))

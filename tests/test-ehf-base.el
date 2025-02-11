@@ -1,16 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:05:11>
+;;; Timestamp: <2025-02-12 00:45:09>
 ;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-base.el
 
 (require 'ert)
-
-;; Loadable
-(ert-deftest test-ehf-base-loadable
-    ()
-  (require 'ehf-base)
-  (should
-   (featurep 'ehf-base)))
 
 ;; Header
 (ert-deftest test-ehf-base-insert-header

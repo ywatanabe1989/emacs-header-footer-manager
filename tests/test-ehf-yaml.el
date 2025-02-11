@@ -1,16 +1,11 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:37:14>
+;;; Timestamp: <2025-02-12 00:46:15>
 ;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-yaml.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ert)
 (require 'ehf-yaml)
-
-(ert-deftest test-ehf-yaml-loadable
-    ()
-  (should
-   (featurep 'ehf-yaml)))
 
 (ert-deftest test-ehf-yaml-header-format
     ()

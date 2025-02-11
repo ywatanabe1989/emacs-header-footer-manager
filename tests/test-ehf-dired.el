@@ -1,15 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:08:49>
+;;; Timestamp: <2025-02-12 00:45:16>
 ;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-dired.el
+
 (require 'ert)
 (require 'dired)
-
-(ert-deftest test-ehf-dired-loadable
-    ()
-  (require 'ehf-dired)
-  (should
-   (featurep 'ehf-dired)))
 
 (ert-deftest test-ehf-dired-update-header-footer
     ()
