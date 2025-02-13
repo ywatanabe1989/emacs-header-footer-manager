@@ -1,5 +1,5 @@
 <!-- ---
-!-- Timestamp: 2025-02-14 07:07:39
+!-- Timestamp: 2025-02-14 07:15:19
 !-- Author: ywatanabe
 !-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
@@ -19,13 +19,13 @@ Automatic header and footer management in Emacs.
 
 ## Supported Files
 
-- [Elisp (.el)](./examples/example.el)
-- [Markdown (.md)](./examples/example.md)
-- [Org (.org)](./examples/example.org)
-- [Python (.py)](./examples/example.py)
-- [Shell (.sh)](./examples/example.sh)
-- [TeX (.tex)](./examples/example.tex)
-- [YAML (.yaml, .yml)](./examples/example.yaml)
+- [Elisp (.el)](./examples/example.el?plain=1)
+- [Markdown (.md)](./examples/example.md?plain=1)
+- [Org (.org)](./examples/example.org?plain=1)
+- [Python (.py)](./examples/example.py?plain=1)
+- [Shell (.sh)](./examples/example.sh?plain=1)
+- [TeX (.tex)](./examples/example.tex?plain=1)
+- [YAML (.yaml, .yml)](./examples/example.yaml?plain=1)
 
 ## Installation
 
