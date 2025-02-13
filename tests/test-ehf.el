@@ -66,11 +66,11 @@
   (should
    (featurep 'ehf-yaml)))
 
-(ert-deftest test-ehf-main-loadable
+(ert-deftest test-ehf-update-header-and-footer-loadable
     ()
-  (require 'ehf-main)
+  (require 'ehf-update-header-and-footer)
   (should
-   (featurep 'ehf-main)))
+   (featurep 'ehf-update-header-and-footer)))
 
 (ert-deftest test-ehf-dired-loadable
     ()

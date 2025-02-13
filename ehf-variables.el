@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 19:53:45>
-;;; File: /home/ywatanabe/proj/elisp-header-footer/ehf-variables.el
+;;; Timestamp: <2025-02-14 05:03:04>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-variables.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 ;; Customization Group

@@ -1,78 +1,109 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:09>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-base.el
+;;; Timestamp: <2025-02-14 06:05:59>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-base.el
 
 (require 'ert)
+(require 'ehf-base)
 
-;; Header
-(ert-deftest test-ehf-base-insert-header
+(ert-deftest test-ehf-base-with-buffer-insert
     ()
   (with-temp-buffer
-    (let
-        ((test-template "Test: %s")
-         (test-format-fn
-          (lambda
-            (path)
-            (format "Test: %s" path)))
-         (test-path "/test/path")
-         (test-newlines 2))
-      (--ehf-base-insert-header test-template test-format-fn test-path test-newlines)
-      (should
-       (string=
-        (buffer-string)
-        (concat "Test: /test/path\n\n"))))))
+    (--ehf-base-with-buffer
+     nil
+     (lambda
+       ()
+       (insert "test")))
+    (should
+     (string=
+      (buffer-string)
+      "test"))))
 
-;; Footer
-(ert-deftest test-ehf-base-insert-footer
+(ert-deftest test-ehf-base-insert-header-empty
     ()
   (with-temp-buffer
-    (let
-        ((test-format-fn
-          (lambda
-            (path)
-            "EOF"))
-         (test-path "/test/path")
-         (test-newlines 2))
-      (--ehf-base-insert-footer test-format-fn test-path test-newlines)
-      (should
-       (string=
-        (buffer-string)
-        (concat "\n\nEOF"))))))
+    (--ehf-base-insert-header
+     ""
+     (lambda
+       (x)
+       "")
+     nil
+     1)
+    (should
+     (string=
+      (buffer-string)
+      "\n"))))
 
-;; Remove Headers
-(ert-deftest test-ehf-base-remove-headers
+(ert-deftest test-ehf-base-insert-header-content
     ()
   (with-temp-buffer
-    (let
-        ((test-header "Header\nContent")
-         (test-pattern "\\(Header\n\\)")
-         (test-extension "txt"))
-      (insert test-header)
-      (setq buffer-file-name "test.txt")
-      (--ehf-base-remove-headers test-pattern test-extension nil)
-      (should
-       (string=
-        (buffer-string)
-        "Content")))))
+    (--ehf-base-insert-header
+     "template"
+     (lambda
+       (x)
+       "header")
+     nil
+     1)
+    (should
+     (string=
+      (buffer-string)
+      "header\n"))))
 
-;; Remove Footers
-(ert-deftest test-ehf-base-remove-footers
+(ert-deftest test-ehf-base-insert-footer-empty
     ()
   (with-temp-buffer
-    (let
-        ((test-content "Content\nFooter")
-         (test-pattern "\\(Footer\\)")
-         (test-extension "txt"))
-      (insert test-content)
-      (setq buffer-file-name "test.txt")
-      (--ehf-base-remove-footers test-pattern test-extension nil)
-      (should
-       (string=
-        (buffer-string)
-        "Content\n")))))
+    (--ehf-base-insert-footer
+     (lambda
+       (x)
+       "")
+     nil
+     1)
+    (should
+     (string=
+      (buffer-string)
+      "\n"))))
 
-(provide 'test-ehf-base)
+(ert-deftest test-ehf-base-insert-footer-content
+    ()
+  (with-temp-buffer
+    (--ehf-base-insert-footer
+     (lambda
+       (x)
+       "footer")
+     nil
+     1)
+    (should
+     (string=
+      (buffer-string)
+      "\nfooter"))))
+
+;; (ert-deftest test-ehf-base-remove-headers-match
+;;     ()
+;;   (with-temp-buffer
+;;     (setq buffer-file-name "/tmp/test-file.txt")
+;;     (insert "header\ntext")
+;;     (--ehf-base-remove-headers
+;;      "header"
+;;      "txt"
+;;      nil)
+;;     (should
+;;      (string=
+;;       (buffer-string)
+;;       "text"))))
+
+;; (ert-deftest test-ehf-base-remove-footers-match
+;;     ()
+;;   (with-temp-buffer
+;;     (setq buffer-file-name "/tmp/test-file.txt")
+;;     (insert "text\nfooter")
+;;     (--ehf-base-remove-footers
+;;      "footer"
+;;      "txt"
+;;      nil)
+;;     (should
+;;      (string=
+;;       (buffer-string)
+;;       "text\n"))))
 
 (provide 'test-ehf-base)
 

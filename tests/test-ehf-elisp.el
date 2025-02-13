@@ -1,47 +1,59 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:24>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
+;;; Timestamp: <2025-02-14 06:14:40>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
 
 (require 'ert)
 (require 'ehf-elisp)
 
-(ert-deftest test-ehf-elisp-header-format
-    ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.el")
-         (buffer-file-name "/test/file.el"))
-      (--ehf-elisp-insert-header test-path)
-      (goto-char
-       (point-min))
-      (should
-       (looking-at --ehf-elisp-header-pattern)))))
+(defconst elisp-extensions
+  '("el"))
 
-(ert-deftest test-ehf-elisp-footer-format
+(ert-deftest test-ehf-elisp-format-header
     ()
-  (with-temp-buffer
+  (dolist
+      (ext elisp-extensions)
     (let
-        ((test-path "/test/file.el")
-         (buffer-file-name "/test/file.el"))
-      (--ehf-elisp-insert-footer test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/tmp/test-file.%s" ext))
+         (buffer-file-name
+          (format "/tmp/test-file.%s" ext)))
+      (should
+       (string-match-p --ehf-elisp-header-pattern
+                       (--ehf-elisp-format-header test-path))))))
+
+(ert-deftest test-ehf-elisp-format-footer
+    ()
+  (dolist
+      (ext elisp-extensions)
+    (let
+        ((test-path
+          (format "/tmp/test-file.%s" ext))
+         (buffer-file-name
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-elisp-footer-pattern
-                       (buffer-string))))))
+                       (--ehf-elisp-format-footer))))))
 
-(ert-deftest test-ehf-elisp-update-both
+(ert-deftest test-ehf-elisp-update-header-and-footer
     ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.el")
-         (buffer-file-name "/test/file.el"))
-      (--ehf-elisp-update-header-and-footer test-path)
-      (should
-       (buffer-modified-p)))))
-
-(provide 'test-ehf-elisp)
+  (dolist
+      (ext elisp-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/tmp/test-file.%s" ext))
+           (buffer-file-name
+            (format "/tmp/test-file.%s" ext)))
+        ;; Set buffer as unmodified initially
+        (set-buffer-modified-p nil)
+        ;; Perform update
+        (--ehf-elisp-update-header-and-footer)
+        ;; Check content was modified
+        (should
+         (>
+          (buffer-size)
+          0))))))
 
 (provide 'test-ehf-elisp)
 

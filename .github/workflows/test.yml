@@ -1,7 +1,7 @@
-# Timestamp: "2025-02-12 00:34:13 (ywatanabe)"
-# File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/.github/workflows/test.yml
+# Timestamp: "2025-02-14 06:21:40 (ywatanabe)"
+# File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/.github/workflows/test.yml
 
-name: CI
+name: tests
 on:
   push:
     paths-ignore:
@@ -30,46 +30,8 @@ jobs:
       - uses: purcell/setup-emacs@master
         with:
           version: ${{ matrix.emacs_version }}
-      - name: Install dependencies
+      - name: run-tests
         run: |
-          emacs -batch -l package \
-          --eval "(add-to-list 'package-archives '(\"melpa\" . \"https://melpa.org/packages/\") t)" \
-          --eval "(package-initialize)" \
-          --eval "(package-refresh-contents)" \
-          --eval "(package-install 'projectile)"
-      - name: Run tests
-        run: |
-          emacs -batch -l ert \
-          -l package \
-          --eval "(progn \
-          (package-initialize) \
-          (add-to-list 'load-path \"/home/runner/.emacs.d/elpa/projectile-20250209.605\") \
-          (require 'projectile))" \
-          -l ehf-variables.el \
-          -l ehf-base.el \
-          -l ehf-registry.el \
-          -l ehf-elisp.el \
-          -l ehf-markdown.el \
-          -l ehf-org.el \
-          -l ehf-python.el \
-          -l ehf-shell.el \
-          -l ehf-tex.el \
-          -l ehf-yaml.el \
-          -l ehf-main.el \
-          -l ehf-dired.el \
-          -l tests/test-ehf-base.el \
-          -l tests/test-ehf-dired.el \
-          -l tests/test-ehf.el \
-          -l tests/test-ehf-elisp.el \
-          -l tests/test-ehf-main.el \
-          -l tests/test-ehf-markdown.el \
-          -l tests/test-ehf-org.el \
-          -l tests/test-ehf-python.el \
-          -l tests/test-ehf-registry.el \
-          -l tests/test-ehf-shell.el \
-          -l tests/test-ehf-tex.el \
-          -l tests/test-ehf-variables.el \
-          -l tests/test-ehf-yaml.el \
-          -f ert-run-tests-batch-and-exit
+          sh run-tests.sh
 
 # EOF

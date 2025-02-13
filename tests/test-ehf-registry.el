@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:51>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-registry.el
+;;; Timestamp: <2025-02-14 06:05:57>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-registry.el
 
 (require 'ert)
 (require 'ehf-registry)
@@ -10,8 +10,8 @@
 (ert-deftest test-ehf-registry-register-file
     ()
   (let
-      ((test-file "/test/file.txt")
-       (buffer-file-name "/test/file.txt")
+      ((test-file "/tmp/test-file.txt")
+       (buffer-file-name "/tmp/test-file.txt")
        (ehf-exclude-files nil))
     (ehf-register-exclude-file)
     (should
@@ -22,11 +22,11 @@
 (ert-deftest test-ehf-registry-unregister-file
     ()
   (let
-      ((test-file "/test/file.txt")
-       (buffer-file-name "/test/file.txt")
+      ((test-file "/tmp/test-file.txt")
+       (buffer-file-name "/tmp/test-file.txt")
        (ehf-exclude-files
         (list
-         (expand-file-name "/test/file.txt"))))
+         (expand-file-name "/tmp/test-file.txt"))))
     (ehf-unregister-exclude-file)
     (should-not
      (member
@@ -36,8 +36,8 @@
 (ert-deftest test-ehf-registry-toggle-file
     ()
   (let
-      ((test-file "/test/file.txt")
-       (buffer-file-name "/test/file.txt")
+      ((test-file "/tmp/test-file.txt")
+       (buffer-file-name "/tmp/test-file.txt")
        (ehf-exclude-files nil))
     (ehf-toggle-exclude-file)
     (should
