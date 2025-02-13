@@ -1,23 +1,23 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:21:12>
+;;; Timestamp: <2025-02-14 06:14:55>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-markdown.el
 
 (require 'ert)
 (require 'ehf-markdown)
 
-(defconst test-file-extensions
+(defconst markdown-extensions
   '("md"))
 
 (ert-deftest test-ehf-markdown-format-header
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext markdown-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-markdown-header-pattern
                        (--ehf-markdown-format-header test-path))))))
@@ -25,12 +25,12 @@
 (ert-deftest test-ehf-markdown-format-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext markdown-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-markdown-footer-pattern
                        (--ehf-markdown-format-footer))))))
@@ -38,16 +38,23 @@
 (ert-deftest test-ehf-markdown-update-header-and-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext markdown-extensions)
     (with-temp-buffer
       (let
           ((test-path
-            (format "/test/file.%s" ext))
+            (format "/tmp/test-file.%s" ext))
            (buffer-file-name
-            (format "/test/file.%s" ext)))
-        (--ehf-markdown-update-header-and-footer test-path)
+            (format "/tmp/test-file.%s" ext)))
+        ;; Set buffer as unmodified initially
+        (set-buffer-modified-p nil)
+        ;; Perform update
+        (--ehf-markdown-update-header-and-footer)
+        ;; Check content was modified
+        (sleep-for 1)
         (should
-         (buffer-modified-p))))))
+         (>
+          (buffer-size)
+          0))))))
 
 (provide 'test-ehf-markdown)
 

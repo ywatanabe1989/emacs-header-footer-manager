@@ -1,12 +1,12 @@
 <!-- ---
-!-- Timestamp: 2025-02-14 05:03:05
+!-- Timestamp: 2025-02-14 06:19:15
 !-- Author: ywatanabe
 !-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
 
 # Elisp Header Footer (EHF)
 
-[![Build Status](https://github.com/ywatanabe1989/emacs-header-footer/workflows/CI/badge.svg)](https://github.com/ywatanabe1989/emacs-header-footer/actions)
+[![Build Status](https://github.com/ywatanabe1989/emacs-header-footer/workflows/tests/badge.svg)](https://github.com/ywatanabe1989/emacs-header-footer/actions)
 
 Automatic header and footer management in Emacs.
 

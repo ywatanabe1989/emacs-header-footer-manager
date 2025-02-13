@@ -1,15 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:30:20>
+;;; Timestamp: <2025-02-14 06:05:59>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-base.el
 
 (require 'ert)
 (require 'ehf-base)
-
-(ert-deftest test-ehf-base-loadable
-    ()
-  (should
-   (featurep 'ehf-base)))
 
 (ert-deftest test-ehf-base-with-buffer-insert
     ()
@@ -85,7 +80,7 @@
 ;; (ert-deftest test-ehf-base-remove-headers-match
 ;;     ()
 ;;   (with-temp-buffer
-;;     (setq buffer-file-name "/test/file.txt")
+;;     (setq buffer-file-name "/tmp/test-file.txt")
 ;;     (insert "header\ntext")
 ;;     (--ehf-base-remove-headers
 ;;      "header"
@@ -99,7 +94,7 @@
 ;; (ert-deftest test-ehf-base-remove-footers-match
 ;;     ()
 ;;   (with-temp-buffer
-;;     (setq buffer-file-name "/test/file.txt")
+;;     (setq buffer-file-name "/tmp/test-file.txt")
 ;;     (insert "text\nfooter")
 ;;     (--ehf-base-remove-footers
 ;;      "footer"

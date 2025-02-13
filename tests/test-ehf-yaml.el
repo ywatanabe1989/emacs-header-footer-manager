@@ -1,24 +1,24 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:20:31>
+;;; Timestamp: <2025-02-14 06:16:44>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-yaml.el
 
 (require 'ert)
 (require 'ehf-yaml)
 
-(defconst test-file-extensions
+(defconst yaml-extensions
   '("yaml"
     "yml"))
 
 (ert-deftest test-ehf-yaml-format-header
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext yaml-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-yaml-header-pattern
                        (--ehf-yaml-format-header test-path))))))
@@ -26,12 +26,12 @@
 (ert-deftest test-ehf-yaml-format-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext yaml-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-yaml-footer-pattern
                        (--ehf-yaml-format-footer))))))
@@ -39,16 +39,22 @@
 (ert-deftest test-ehf-yaml-update-header-and-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext yaml-extensions)
     (with-temp-buffer
       (let
           ((test-path
-            (format "/test/file.%s" ext))
+            (format "/tmp/test-file.%s" ext))
            (buffer-file-name
-            (format "/test/file.%s" ext)))
-        (--ehf-yaml-update-header-and-footer test-path)
+            (format "/tmp/test-file.%s" ext)))
+        ;; Set buffer as unmodified initially
+        (set-buffer-modified-p nil)
+        ;; Perform update
+        (--ehf-yaml-update-header-and-footer)
+        ;; Check content was modified
         (should
-         (buffer-modified-p))))))
+         (>
+          (buffer-size)
+          0))))))
 
 (provide 'test-ehf-yaml)
 

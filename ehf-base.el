@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:02:59>
+;;; Timestamp: <2025-02-14 06:10:12>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-base.el
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
@@ -25,6 +25,37 @@
              (not existing-buf))
       (save-buffer)
       (kill-buffer buf))))
+
+;; (defun --ehf-base-with-buffer
+;;     (file-path fn)
+;;   "Execute FN with proper buffer handling for FILE-PATH."
+;;   (let*
+;;       ((existing-buf
+;;         (and file-path
+;;              (get-file-buffer file-path)))
+;;        (buf
+;;         (or existing-buf
+;;             (if file-path
+;;                 (find-file-noselect file-path)
+;;               (current-buffer)))))
+;;     (with-current-buffer buf
+;;       ;; Ensure buffer-file-name is set
+;;       (let
+;;           ((buffer-file-name
+;;             (or file-path buffer-file-name)))
+;;         ;; Execute function in current buffer
+;;         (funcall fn)
+;;         ;; Check if content was modified
+;;         (when
+;;             (>
+;;              (buffer-size)
+;;              0)
+;;           (set-buffer-modified-p t))))
+;;     (when
+;;         (and file-path
+;;              (not existing-buf))
+;;       (save-buffer)
+;;       (kill-buffer buf))))
 
 (defun --ehf-base-insert-header
     (template format-fn file-path n-newlines)

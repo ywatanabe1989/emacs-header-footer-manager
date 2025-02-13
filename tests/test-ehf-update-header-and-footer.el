@@ -1,11 +1,14 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:29>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-update-header-and-footer.el
+;;; Timestamp: <2025-02-14 06:16:26>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-update-header-and-footer.el
 
 (require 'ert)
 (require 'ehf-update-header-and-footer)
 (require 'ehf-variables)
+
+(defconst extensions
+  '("el" "md" "org" "py" "sh" "tex" "yaml" "yml"))
 
 (ert-deftest test-ehf-update-header-and-footer-excluded-file
     ()
@@ -22,16 +25,13 @@
 
 (ert-deftest test-ehf-update-header-and-footer-supported-extensions
     ()
-  (let
-      ((test-extensions
-        '("el" "md" "org" "py" "sh" "tex" "yaml" "yml")))
-    (dolist
-        (ext test-extensions)
-      (let*
-          ((test-file
-            (concat "/test/file." ext))
-           (buffer-file-name test-file))
-        (ehf-update-header-and-footer)))))
+  (dolist
+      (ext extensions)
+    (let*
+        ((test-file
+          (concat "/tmp/test-file." ext))
+         (buffer-file-name test-file))
+      (ehf-update-header-and-footer))))
 
 (provide 'test-ehf-update-header-and-footer)
 

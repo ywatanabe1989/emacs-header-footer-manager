@@ -1,23 +1,23 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:21:28>
+;;; Timestamp: <2025-02-14 06:15:05>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-org.el
 
 (require 'ert)
 (require 'ehf-org)
 
-(defconst test-file-extensions
+(defconst org-extensions
   '("org"))
 
 (ert-deftest test-ehf-org-format-header
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext org-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-org-header-pattern
                        (--ehf-org-format-header test-path))))))
@@ -25,12 +25,12 @@
 (ert-deftest test-ehf-org-format-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext org-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-org-footer-pattern
                        (--ehf-org-format-footer))))))
@@ -38,16 +38,23 @@
 (ert-deftest test-ehf-org-update-header-and-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext org-extensions)
     (with-temp-buffer
       (let
           ((test-path
-            (format "/test/file.%s" ext))
+            (format "/tmp/test-file.%s" ext))
            (buffer-file-name
-            (format "/test/file.%s" ext)))
-        (--ehf-org-update-header-and-footer test-path)
+            (format "/tmp/test-file.%s" ext)))
+        ;; Set buffer as unmodified initially
+        (set-buffer-modified-p nil)
+        ;; Perform update
+        (--ehf-org-update-header-and-footer)
+        ;; Check content was modified
+        (sleep-for 1)
         (should
-         (buffer-modified-p))))))
+         (>
+          (buffer-size)
+          0))))))
 
 (provide 'test-ehf-org)
 

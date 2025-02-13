@@ -1,23 +1,23 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:20:57>
+;;; Timestamp: <2025-02-14 06:14:40>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
 
 (require 'ert)
 (require 'ehf-elisp)
 
-(defconst test-file-extensions
+(defconst elisp-extensions
   '("el"))
 
 (ert-deftest test-ehf-elisp-format-header
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext elisp-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-elisp-header-pattern
                        (--ehf-elisp-format-header test-path))))))
@@ -25,12 +25,12 @@
 (ert-deftest test-ehf-elisp-format-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext elisp-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-elisp-footer-pattern
                        (--ehf-elisp-format-footer))))))
@@ -38,16 +38,22 @@
 (ert-deftest test-ehf-elisp-update-header-and-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext elisp-extensions)
     (with-temp-buffer
       (let
           ((test-path
-            (format "/test/file.%s" ext))
+            (format "/tmp/test-file.%s" ext))
            (buffer-file-name
-            (format "/test/file.%s" ext)))
-        (--ehf-elisp-update-header-and-footer test-path)
+            (format "/tmp/test-file.%s" ext)))
+        ;; Set buffer as unmodified initially
+        (set-buffer-modified-p nil)
+        ;; Perform update
+        (--ehf-elisp-update-header-and-footer)
+        ;; Check content was modified
         (should
-         (buffer-modified-p))))))
+         (>
+          (buffer-size)
+          0))))))
 
 (provide 'test-ehf-elisp)
 

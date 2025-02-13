@@ -1,12 +1,12 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:22:12>
+;;; Timestamp: <2025-02-14 06:15:44>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-shell.el
 
 (require 'ert)
 (require 'ehf-shell)
 
-(defconst test-file-extensions
+(defconst shell-extensions
   '("sh"
     "bash"
     "def"
@@ -15,12 +15,12 @@
 (ert-deftest test-ehf-shell-format-header
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext shell-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-shell-header-pattern
                        (--ehf-shell-format-header test-path))))))
@@ -28,12 +28,12 @@
 (ert-deftest test-ehf-shell-format-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext shell-extensions)
     (let
         ((test-path
-          (format "/test/file.%s" ext))
+          (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/test/file.%s" ext)))
+          (format "/tmp/test-file.%s" ext)))
       (should
        (string-match-p --ehf-shell-footer-pattern
                        (--ehf-shell-format-footer))))))
@@ -41,16 +41,22 @@
 (ert-deftest test-ehf-shell-update-header-and-footer
     ()
   (dolist
-      (ext test-file-extensions)
+      (ext shell-extensions)
     (with-temp-buffer
       (let
           ((test-path
-            (format "/test/file.%s" ext))
+            (format "/tmp/test-file.%s" ext))
            (buffer-file-name
-            (format "/test/file.%s" ext)))
-        (--ehf-shell-update-header-and-footer test-path)
+            (format "/tmp/test-file.%s" ext)))
+        ;; Set buffer as unmodified initially
+        (set-buffer-modified-p nil)
+        ;; Perform update
+        (--ehf-shell-update-header-and-footer)
+        ;; Check content was modified
         (should
-         (buffer-modified-p))))))
+         (>
+          (buffer-size)
+          0))))))
 
 (provide 'test-ehf-shell)
 

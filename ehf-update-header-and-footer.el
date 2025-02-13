@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:03>
+;;; Timestamp: <2025-02-14 06:00:14>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
@@ -67,6 +67,38 @@ Files listed in `ehf-exclude-files' will be skipped."
           (save-buffer))
         (unless existing-buf
           (kill-buffer))))))
+
+;; Base Functions
+;; ----------------------------------------
+
+(defun --ehf-base-update-header-and-footer
+    (expected-routed-ext
+     header-template
+     header-pattern
+     header-format-fn
+     footer-template
+     footer-pattern
+     footer-format-fn
+     &optional
+     file-path
+     n-new-lines)
+  "Update header and footer using specified templates and formatters."
+  (let*
+      ((buffer-path
+        (or file-path buffer-file-name))
+       (ext
+        (file-name-extension buffer-path))
+       (routed-ext
+        (--ehf-route-ext ext)))
+    (when
+        (equal routed-ext expected-routed-ext)
+      ;; Insert content
+      (--ehf-base-remove-headers header-pattern ext file-path)
+      (--ehf-base-insert-header header-template header-format-fn file-path n-new-lines)
+      (--ehf-base-remove-footers footer-pattern ext file-path)
+      (--ehf-base-insert-footer footer-format-fn file-path n-new-lines)
+      ;; Mark buffer as modified
+      (set-buffer-modified-p t))))
 
 ;; ;; Before Save Hook
 ;; ;; ----------------------------------------
