@@ -1,20 +1,21 @@
 <!-- ---
-!-- Timestamp: 2025-02-14 07:15:19
+!-- Timestamp: 2025-02-14 07:20:06
 !-- Author: ywatanabe
 !-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
 
 # Emacs Header Footer Manager (EHF)
 
-[![Build Status](https://github.com/ywatanabe1989/emacs-header-footer/workflows/tests/badge.svg)](https://github.com/ywatanabe1989/emacs-header-footer/actions)
+[![Build Status](https://github.com/ywatanabe1989/emacs-header-footer-manager/workflows/tests/badge.svg)](https://github.com/ywatanabe1989/emacs-header-footer-manager/actions)
 
 Automatic header and footer management in Emacs.
 
 ## Features
 
-- Header/footer management for multiple file types
-- Timestamp updates and file path tracking
-- File exclusion system
+- Header/footer management
+- Timestamp updates
+- File path addition to header (friendly for LLM)
+- File exclusion system for update
 - Dired integration for batch operations
 
 ## Supported Files
