@@ -1,42 +1,54 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:46:15>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-yaml.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Timestamp: <2025-02-14 05:20:31>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-yaml.el
 
 (require 'ert)
 (require 'ehf-yaml)
 
-(ert-deftest test-ehf-yaml-header-format
-    ()
-  (should
-   (string-match-p "# Timestamp:"
-                   (--ehf-yaml-format-header "/tmp/test.yml"))))
+(defconst test-file-extensions
+  '("yaml"
+    "yml"))
 
-(ert-deftest test-ehf-yaml-footer-format
+(ert-deftest test-ehf-yaml-format-header
     ()
-  (should
-   (string=
-    (--ehf-yaml-format-footer)
-    "# EOF")))
+  (dolist
+      (ext test-file-extensions)
+    (let
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
+      (should
+       (string-match-p --ehf-yaml-header-pattern
+                       (--ehf-yaml-format-header test-path))))))
 
-(ert-deftest test-ehf-yaml-extension-check-yaml
+(ert-deftest test-ehf-yaml-format-footer
     ()
-  (with-temp-buffer
-    (setq buffer-file-name "/tmp/test.yaml")
-    (should
-     (equal
-      (file-name-extension buffer-file-name)
-      "yaml"))))
+  (dolist
+      (ext test-file-extensions)
+    (let
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
+      (should
+       (string-match-p --ehf-yaml-footer-pattern
+                       (--ehf-yaml-format-footer))))))
 
-(ert-deftest test-ehf-yaml-extension-check-yml
+(ert-deftest test-ehf-yaml-update-header-and-footer
     ()
-  (with-temp-buffer
-    (setq buffer-file-name "/tmp/test.yml")
-    (should
-     (equal
-      (file-name-extension buffer-file-name)
-      "yml"))))
+  (dolist
+      (ext test-file-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/test/file.%s" ext))
+           (buffer-file-name
+            (format "/test/file.%s" ext)))
+        (--ehf-yaml-update-header-and-footer test-path)
+        (should
+         (buffer-modified-p))))))
 
 (provide 'test-ehf-yaml)
 

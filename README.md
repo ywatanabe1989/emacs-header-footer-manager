@@ -1,7 +1,7 @@
 <!-- ---
-!-- Timestamp: 2025-02-12 00:53:36
+!-- Timestamp: 2025-02-14 05:03:05
 !-- Author: ywatanabe
-!-- File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/README.md
+!-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
 
 # Elisp Header Footer (EHF)
@@ -69,6 +69,13 @@ M-x ehf-unregister-exclude-file ; Remove from list
 ;; Quick exclusion toggle
 (global-set-key (kbd "C-c <delete>") 'ehf-toggle-exclude-file)
 ```
+
+## TODO
+- [ ] html
+- [ ] css
+- [ ] js
+- [ ] ts
+- [ ] zsh
 
 ## Contact
 

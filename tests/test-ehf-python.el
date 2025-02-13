@@ -1,45 +1,53 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:45>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-python.el
+;;; Timestamp: <2025-02-14 05:21:46>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-python.el
 
 (require 'ert)
 (require 'ehf-python)
 
-(ert-deftest test-ehf-python-header-format
-    ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.py")
-         (buffer-file-name "/test/file.py"))
-      (--ehf-python-insert-header test-path)
-      (goto-char
-       (point-min))
-      (should
-       (looking-at --ehf-python-header-pattern)))))
+(defconst test-file-extensions
+  '("py"))
 
-(ert-deftest test-ehf-python-footer-format
+(ert-deftest test-ehf-python-format-header
     ()
-  (with-temp-buffer
+  (dolist
+      (ext test-file-extensions)
     (let
-        ((test-path "/test/file.py")
-         (buffer-file-name "/test/file.py"))
-      (--ehf-python-insert-footer test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
+      (should
+       (string-match-p --ehf-python-header-pattern
+                       (--ehf-python-format-header test-path))))))
+
+(ert-deftest test-ehf-python-format-footer
+    ()
+  (dolist
+      (ext test-file-extensions)
+    (let
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
       (should
        (string-match-p --ehf-python-footer-pattern
-                       (buffer-string))))))
+                       (--ehf-python-format-footer))))))
 
-(ert-deftest test-ehf-python-update-both
+(ert-deftest test-ehf-python-update-header-and-footer
     ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.py")
-         (buffer-file-name "/test/file.py"))
-      (--ehf-python-update-header-and-footer test-path)
-      (should
-       (buffer-modified-p)))))
+  (dolist
+      (ext test-file-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/test/file.%s" ext))
+           (buffer-file-name
+            (format "/test/file.%s" ext)))
+        (--ehf-python-update-header-and-footer test-path)
+        (should
+         (buffer-modified-p))))))
 
 (provide 'test-ehf-python)
 

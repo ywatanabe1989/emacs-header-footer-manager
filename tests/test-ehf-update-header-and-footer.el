@@ -1,13 +1,13 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
 ;;; Timestamp: <2025-02-12 00:45:29>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-main.el
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-update-header-and-footer.el
 
 (require 'ert)
-(require 'ehf-main)
+(require 'ehf-update-header-and-footer)
 (require 'ehf-variables)
 
-(ert-deftest test-ehf-main-excluded-file
+(ert-deftest test-ehf-update-header-and-footer-excluded-file
     ()
   (let
       ((test-file "/test/path/file.el"))
@@ -20,7 +20,7 @@
     (setq ehf-exclude-files
           (delete test-file ehf-exclude-files))))
 
-(ert-deftest test-ehf-main-supported-extensions
+(ert-deftest test-ehf-update-header-and-footer-supported-extensions
     ()
   (let
       ((test-extensions
@@ -33,10 +33,10 @@
            (buffer-file-name test-file))
         (ehf-update-header-and-footer)))))
 
-(provide 'test-ehf-main)
+(provide 'test-ehf-update-header-and-footer)
 
 (when
     (not load-file-name)
-  (message "test-ehf-main.el loaded."
+  (message "test-ehf-update-header-and-footer.el loaded."
            (file-name-nondirectory
             (or load-file-name buffer-file-name))))

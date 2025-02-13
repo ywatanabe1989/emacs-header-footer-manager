@@ -1,47 +1,56 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:55>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-shell.el
+;;; Timestamp: <2025-02-14 05:22:12>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-shell.el
 
 (require 'ert)
 (require 'ehf-shell)
 
-(ert-deftest test-ehf-shell-header-format
-    ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.sh")
-         (buffer-file-name "/test/file.sh"))
-      (--ehf-shell-insert-header test-path)
-      (goto-char
-       (point-min))
-      (should
-       (looking-at --ehf-shell-header-pattern)))))
+(defconst test-file-extensions
+  '("sh"
+    "bash"
+    "def"
+    "source"))
 
-(ert-deftest test-ehf-shell-footer-format
+(ert-deftest test-ehf-shell-format-header
     ()
-  (with-temp-buffer
+  (dolist
+      (ext test-file-extensions)
     (let
-        ((test-path "/test/file.sh")
-         (buffer-file-name "/test/file.sh"))
-      (--ehf-shell-insert-footer test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
+      (should
+       (string-match-p --ehf-shell-header-pattern
+                       (--ehf-shell-format-header test-path))))))
+
+(ert-deftest test-ehf-shell-format-footer
+    ()
+  (dolist
+      (ext test-file-extensions)
+    (let
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
       (should
        (string-match-p --ehf-shell-footer-pattern
-                       (buffer-string))))))
+                       (--ehf-shell-format-footer))))))
 
-(ert-deftest test-ehf-shell-update-both
+(ert-deftest test-ehf-shell-update-header-and-footer
     ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.sh")
-         (buffer-file-name "/test/file.sh"))
-      (--ehf-shell-update-header-and-footer test-path)
-      (should
-       (buffer-modified-p)))))
-
-(provide 'test-ehf-shell)
+  (dolist
+      (ext test-file-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/test/file.%s" ext))
+           (buffer-file-name
+            (format "/test/file.%s" ext)))
+        (--ehf-shell-update-header-and-footer test-path)
+        (should
+         (buffer-modified-p))))))
 
 (provide 'test-ehf-shell)
 

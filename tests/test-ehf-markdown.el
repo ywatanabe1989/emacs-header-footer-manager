@@ -1,47 +1,53 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:34>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-markdown.el
+;;; Timestamp: <2025-02-14 05:21:12>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-markdown.el
 
 (require 'ert)
 (require 'ehf-markdown)
 
-(ert-deftest test-ehf-markdown-header-format
-    ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.md")
-         (buffer-file-name "/test/file.md"))
-      (--ehf-markdown-insert-header test-path)
-      (goto-char
-       (point-min))
-      (should
-       (looking-at --ehf-markdown-header-pattern)))))
+(defconst test-file-extensions
+  '("md"))
 
-(ert-deftest test-ehf-markdown-footer-format
+(ert-deftest test-ehf-markdown-format-header
     ()
-  (with-temp-buffer
+  (dolist
+      (ext test-file-extensions)
     (let
-        ((test-path "/test/file.md")
-         (buffer-file-name "/test/file.md"))
-      (--ehf-markdown-insert-footer test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
+      (should
+       (string-match-p --ehf-markdown-header-pattern
+                       (--ehf-markdown-format-header test-path))))))
+
+(ert-deftest test-ehf-markdown-format-footer
+    ()
+  (dolist
+      (ext test-file-extensions)
+    (let
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
       (should
        (string-match-p --ehf-markdown-footer-pattern
-                       (buffer-string))))))
+                       (--ehf-markdown-format-footer))))))
 
-(ert-deftest test-ehf-markdown-update-both
+(ert-deftest test-ehf-markdown-update-header-and-footer
     ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.md")
-         (buffer-file-name "/test/file.md"))
-      (--ehf-markdown-update-header-and-footer test-path)
-      (should
-       (buffer-modified-p)))))
-
-(provide 'test-ehf-markdown)
+  (dolist
+      (ext test-file-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/test/file.%s" ext))
+           (buffer-file-name
+            (format "/test/file.%s" ext)))
+        (--ehf-markdown-update-header-and-footer test-path)
+        (should
+         (buffer-modified-p))))))
 
 (provide 'test-ehf-markdown)
 

@@ -1,47 +1,53 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:46:00>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-tex.el
+;;; Timestamp: <2025-02-14 05:22:30>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-tex.el
 
 (require 'ert)
-(require 'ehf-tex)
+(require 'ehf-elisp)
 
-(ert-deftest test-ehf-tex-header-format
+(defconst test-file-extensions
+  '("tex"))
+
+(ert-deftest test-ehf-tex-format-header
     ()
-  (with-temp-buffer
+  (dolist
+      (ext test-file-extensions)
     (let
-        ((test-path "/test/file.tex")
-         (buffer-file-name "/test/file.tex"))
-      (--ehf-tex-insert-header test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
       (should
-       (looking-at --ehf-tex-header-pattern)))))
+       (string-match-p --ehf-tex-header-pattern
+                       (--ehf-tex-format-header test-path))))))
 
-(ert-deftest test-ehf-tex-footer-format
+(ert-deftest test-ehf-tex-format-footer
     ()
-  (with-temp-buffer
+  (dolist
+      (ext test-file-extensions)
     (let
-        ((test-path "/test/file.tex")
-         (buffer-file-name "/test/file.tex"))
-      (--ehf-tex-insert-footer test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
       (should
        (string-match-p --ehf-tex-footer-pattern
-                       (buffer-string))))))
+                       (--ehf-tex-format-footer))))))
 
-(ert-deftest test-ehf-tex-update-both
+(ert-deftest test-ehf-tex-update-header-and-footer
     ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.tex")
-         (buffer-file-name "/test/file.tex"))
-      (--ehf-tex-update-header-and-footer test-path)
-      (should
-       (buffer-modified-p)))))
-
-(provide 'test-ehf-tex)
+  (dolist
+      (ext test-file-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/test/file.%s" ext))
+           (buffer-file-name
+            (format "/test/file.%s" ext)))
+        (--ehf-tex-update-header-and-footer test-path)
+        (should
+         (buffer-modified-p))))))
 
 (provide 'test-ehf-tex)
 

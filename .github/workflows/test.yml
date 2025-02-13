@@ -55,13 +55,13 @@ jobs:
           -l ehf-shell.el \
           -l ehf-tex.el \
           -l ehf-yaml.el \
-          -l ehf-main.el \
+          -l ehf-update-header-and-footer.el \
           -l ehf-dired.el \
           -l tests/test-ehf-base.el \
           -l tests/test-ehf-dired.el \
           -l tests/test-ehf.el \
           -l tests/test-ehf-elisp.el \
-          -l tests/test-ehf-main.el \
+          -l tests/test-ehf-update-header-and-footer.el \
           -l tests/test-ehf-markdown.el \
           -l tests/test-ehf-org.el \
           -l tests/test-ehf-python.el \

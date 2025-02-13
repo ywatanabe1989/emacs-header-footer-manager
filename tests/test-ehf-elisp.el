@@ -1,47 +1,53 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-12 00:45:24>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
+;;; Timestamp: <2025-02-14 05:20:57>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
 
 (require 'ert)
 (require 'ehf-elisp)
 
-(ert-deftest test-ehf-elisp-header-format
-    ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.el")
-         (buffer-file-name "/test/file.el"))
-      (--ehf-elisp-insert-header test-path)
-      (goto-char
-       (point-min))
-      (should
-       (looking-at --ehf-elisp-header-pattern)))))
+(defconst test-file-extensions
+  '("el"))
 
-(ert-deftest test-ehf-elisp-footer-format
+(ert-deftest test-ehf-elisp-format-header
     ()
-  (with-temp-buffer
+  (dolist
+      (ext test-file-extensions)
     (let
-        ((test-path "/test/file.el")
-         (buffer-file-name "/test/file.el"))
-      (--ehf-elisp-insert-footer test-path)
-      (goto-char
-       (point-min))
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
+      (should
+       (string-match-p --ehf-elisp-header-pattern
+                       (--ehf-elisp-format-header test-path))))))
+
+(ert-deftest test-ehf-elisp-format-footer
+    ()
+  (dolist
+      (ext test-file-extensions)
+    (let
+        ((test-path
+          (format "/test/file.%s" ext))
+         (buffer-file-name
+          (format "/test/file.%s" ext)))
       (should
        (string-match-p --ehf-elisp-footer-pattern
-                       (buffer-string))))))
+                       (--ehf-elisp-format-footer))))))
 
-(ert-deftest test-ehf-elisp-update-both
+(ert-deftest test-ehf-elisp-update-header-and-footer
     ()
-  (with-temp-buffer
-    (let
-        ((test-path "/test/file.el")
-         (buffer-file-name "/test/file.el"))
-      (--ehf-elisp-update-header-and-footer test-path)
-      (should
-       (buffer-modified-p)))))
-
-(provide 'test-ehf-elisp)
+  (dolist
+      (ext test-file-extensions)
+    (with-temp-buffer
+      (let
+          ((test-path
+            (format "/test/file.%s" ext))
+           (buffer-file-name
+            (format "/test/file.%s" ext)))
+        (--ehf-elisp-update-header-and-footer test-path)
+        (should
+         (buffer-modified-p))))))
 
 (provide 'test-ehf-elisp)
 
