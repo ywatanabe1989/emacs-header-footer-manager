@@ -1,7 +1,8 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:16:44>
+;;; Timestamp: <2025-02-14 14:24:56>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-yaml.el
+
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
@@ -10,10 +11,10 @@
 ;; ----------------------------------------
 
 (defconst --ehf-yaml-header-template
-  "# Timestamp: \"%s (%s)\"\n# File: %s")
+  "# Timestamp: \"%s (%s)\"\n# File: %s\n")
 
 (defconst --ehf-yaml-header-pattern
-  "\\(^# Timestamp: \".* .* (.*)\"\n# File: .*$\\)")
+  "\\(^# Timestamp: \".* .* (.*)\"\n# File: .*\n$\\)")
 
 ;; Footer Variables
 ;; ----------------------------------------

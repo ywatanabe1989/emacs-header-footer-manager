@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:46:08>
+;;; Timestamp: <2025-02-14 13:48:21>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
@@ -20,6 +20,7 @@
 (require 'ehf-org)
 (require 'ehf-python)
 (require 'ehf-shell)
+(require 'ehf-source)
 (require 'ehf-tex)
 (require 'ehf-yaml)
 

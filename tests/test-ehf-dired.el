@@ -5,6 +5,7 @@
 
 (require 'ert)
 (require 'dired)
+(require 'ehf-variables)
 
 (ert-deftest test-ehf-dired-update-header-footer
     ()

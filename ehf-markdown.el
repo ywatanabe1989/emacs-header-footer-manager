@@ -1,5 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
+;;; Timestamp: <2025-02-14 14:54:18>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-markdown.el
+
+;;; -*- coding: utf-8; lexical-binding: t -*-
+;;; Author: ywatanabe
 ;;; Timestamp: <2025-02-14 05:03:00>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-markdown.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -10,10 +15,10 @@
 ;; ----------------------------------------
 
 (defconst --ehf-markdown-header-template
-  "<!-- ---\n!-- Timestamp: %s\n!-- Author: %s\n!-- File: %s\n!-- --- -->")
+  "<!-- ---\n!-- Timestamp: %s\n!-- Author: %s\n!-- File: %s\n!-- --- -->\n")
 
 (defconst --ehf-markdown-header-pattern
-  "\\(<!-- ---\n!-- Timestamp:.*\n!-- Author:.*\n!-- File:.*\n!-- --- -->\\)")
+  "\\(<!-- ---\n!-- Timestamp:.*\n!-- Author:.*\n!-- File:.*\n!-- --- -->\n\\)")
 
 ;; Footer Variables
 ;; ----------------------------------------

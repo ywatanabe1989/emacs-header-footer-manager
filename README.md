@@ -1,5 +1,5 @@
 <!-- ---
-!-- Timestamp: 2025-02-14 07:20:06
+!-- Timestamp: 2025-02-14 15:30:22
 !-- Author: ywatanabe
 !-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
@@ -18,15 +18,16 @@ Automatic header and footer management in Emacs.
 - File exclusion system for update
 - Dired integration for batch operations
 
-## Supported Files
+## Supported Extensions
 
-- [Elisp (.el)](./examples/example.el?plain=1)
-- [Markdown (.md)](./examples/example.md?plain=1)
-- [Org (.org)](./examples/example.org?plain=1)
-- [Python (.py)](./examples/example.py?plain=1)
-- [Shell (.sh)](./examples/example.sh?plain=1)
-- [TeX (.tex)](./examples/example.tex?plain=1)
-- [YAML (.yaml, .yml)](./examples/example.yaml?plain=1)
+- Shell: [.sh](./examples/example.sh?plain=1), [.bash](./examples/example.bash?plain=1)
+- Source: [.source](./examples/example.source?plain=1), [.src](./examples/example.src?plain=1), [.sh.source](./examples/example.sh.source?plain=1), [.conf](./examples/example.conf?plain=1), [.config](./examples/example.config?plain=1), [.def](./examples/example.def?plain=1), [.rc](./examples/example.rc?plain=1), [.profile](./examples/example.profile?plain=1)
+- Elisp: [.el](./examples/example.el?plain=1)
+- Markdown: [.md](./examples/example.md?plain=1)
+- Org: [.org](./examples/example.org?plain=1)
+- TeX: [.tex](./examples/example.tex?plain=1), [.latex](./examples/example.latex?plain=1), [.tex.template](./examples/example.tex.template?plain=1)
+- YAML: [.yaml](./examples/example.yaml?plain=1), [.yml](./examples/example.yml?plain=1)
+- Python: [.py](./examples/example.py?plain=1)
 
 ## Installation
 
@@ -70,13 +71,6 @@ M-x ehf-unregister-exclude-file ; Remove from list
 ;; Quick exclusion toggle
 (global-set-key (kbd "C-c <delete>") 'ehf-toggle-exclude-file)
 ```
-
-## TODO
-- [ ] html
-- [ ] css
-- [ ] js
-- [ ] ts
-- [ ] zsh
 
 ## Contact
 

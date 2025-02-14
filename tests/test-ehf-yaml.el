@@ -1,14 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:16:44>
+;;; Timestamp: <2025-02-14 15:03:17>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-yaml.el
 
 (require 'ert)
 (require 'ehf-yaml)
-
-(defconst yaml-extensions
-  '("yaml"
-    "yml"))
 
 (ert-deftest test-ehf-yaml-format-header
     ()

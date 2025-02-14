@@ -1,7 +1,8 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:03>
+;;; Timestamp: <2025-02-14 15:17:59>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-tex.el
+
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
@@ -9,20 +10,20 @@
 ;; Header Variables
 ;; ----------------------------------------
 
-(defconst --ehf-tex-header-pattern
-  "\\(%% -\\*-.*-\\*-\n%% Timestamp:.*\n%% File:.*$\\)")
+(defconst --ehf-tex-header-template
+  "%%%% -*- coding: utf-8 -*-\n%%%% Timestamp: \"%s (%s)\"\n%%%% File: %s\n")
 
-(defconst --ehf-tex-footer-template
-  "%% EOF")
+(defconst --ehf-tex-header-pattern
+  "\\(%% -\\*-.*-\\*-\n%% Timestamp:.*\n%% File:.*\n$\\)")
 
 ;; Footer Variables
 ;; ----------------------------------------
 
+(defconst --ehf-tex-footer-template
+  "%% EOF")
+
 (defconst --ehf-tex-footer-pattern
   "\\(^%% EOF\\)\\s-*$")
-
-(defconst --ehf-tex-header-template
-  "%%%% -*- coding: utf-8 -*-\n%%%% Timestamp: \"%s (%s)\"\n%%%% File: %s")
 
 ;; Formatters
 ;; ----------------------------------------
