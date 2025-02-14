@@ -1,13 +1,11 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:14:55>
+;;; Timestamp: <2025-02-14 15:02:01>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-markdown.el
 
 (require 'ert)
 (require 'ehf-markdown)
-
-(defconst markdown-extensions
-  '("md"))
+(require 'ehf-variables)
 
 (ert-deftest test-ehf-markdown-format-header
     ()

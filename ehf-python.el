@@ -1,6 +1,11 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:01>
+;;; Timestamp: <2025-02-14 14:34:08>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
+
+;;; -*- coding: utf-8; lexical-binding: t -*-
+;;; Author: ywatanabe
+;;; Timestamp: <2025-02-14 13:43:22>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
@@ -28,20 +33,50 @@
 ;; Formatters
 ;; ----------------------------------------
 
+;; (defun --ehf-python-format-header
+;;     (&optional file-path)
+;;   "Format Python header for FILE-PATH or current buffer's file."
+;;   (let*
+;;       ((path
+;;         (or file-path buffer-file-name))
+;;        (git-path
+;;         (if
+;;             (fboundp 'projectile-project-root)
+;;             (file-relative-name path
+;;                                 (projectile-project-root))
+;;           (let
+;;               ((default-directory
+;;                 (file-name-directory path)))
+;;             (or
+;;              (locate-dominating-file default-directory ".git")
+;;              path)))))
+;;     (format --ehf-python-header-template
+;;             (format-time-string "%Y-%m-%d %H:%M:%S")
+;;             (user-login-name)
+;;             path
+;;             git-path)))
+
 (defun --ehf-python-format-header
     (&optional file-path)
   "Format Python header for FILE-PATH or current buffer's file."
   (let*
       ((path
         (or file-path buffer-file-name))
+       (default-directory
+        (file-name-directory path))
+       (git-root
+        (locate-dominating-file default-directory ".git"))
        (git-path
-        (file-relative-name path
-                            (projectile-project-root))))
+        (if git-root
+            (file-relative-name path git-root)
+          path))
+       (git-path-dot
+        (concat "./" git-path)))
     (format --ehf-python-header-template
             (format-time-string "%Y-%m-%d %H:%M:%S")
             (user-login-name)
             path
-            git-path)))
+            git-path-dot)))
 
 (defun --ehf-python-format-footer
     (&optional file-path)

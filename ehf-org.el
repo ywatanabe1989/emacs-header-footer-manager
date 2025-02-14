@@ -1,5 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
+;;; Timestamp: <2025-02-14 14:54:17>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-org.el
+
+;;; -*- coding: utf-8; lexical-binding: t -*-
+;;; Author: ywatanabe
 ;;; Timestamp: <2025-02-14 05:03:01>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-org.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -10,7 +15,7 @@
 ;; ----------------------------------------
 
 (defconst --ehf-org-header-template
-  "# Timestamp: \"%s (%s)\"\n# File: %s\n\n")
+  "# Timestamp: \"%s (%s)\"\n# File: %s\n")
 
 (defconst --ehf-org-header-pattern
   "\\(# Timestamp:.*\n# File:.*\n\\)")

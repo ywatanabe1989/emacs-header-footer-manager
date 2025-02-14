@@ -1,13 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:15:55>
+;;; Timestamp: <2025-02-14 15:02:56>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-tex.el
 
 (require 'ert)
-(require 'ehf-elisp)
-
-(defconst tex-extensions
-  '("tex"))
+(require 'ehf-tex)
 
 (ert-deftest test-ehf-tex-format-header
     ()

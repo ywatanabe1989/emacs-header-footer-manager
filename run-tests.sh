@@ -1,6 +1,6 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
-# Timestamp: "2025-02-14 06:13:49 (ywatanabe)"
+# Timestamp: "2025-02-14 14:53:31 (ywatanabe)"
 # File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/run-tests.sh
 
 THIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -26,6 +26,7 @@ main () {
           -l ehf-python.el \
           -l ehf-registry.el \
           -l ehf-shell.el \
+          -l ehf-source.el \
           -l ehf-tex.el \
           -l ehf-update-header-and-footer.el \
           -l ehf-yaml.el \
@@ -38,6 +39,7 @@ main () {
           -l tests/test-ehf-python.el \
           -l tests/test-ehf-registry.el \
           -l tests/test-ehf-shell.el \
+          -l tests/test-ehf-source.el \
           -l tests/test-ehf-tex.el \
           -l tests/test-ehf-update-header-and-footer.el \
           -l tests/test-ehf-variables.el \

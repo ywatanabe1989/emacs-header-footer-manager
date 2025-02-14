@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:00:14>
+;;; Timestamp: <2025-02-14 13:46:11>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
@@ -39,6 +39,8 @@ Files listed in `ehf-exclude-files' will be skipped."
           (--ehf-python-update-header-and-footer file-path n-newlines))
          ((equal routed-ext "sh")
           (--ehf-shell-update-header-and-footer file-path n-newlines))
+         ((equal routed-ext "source")
+          (--ehf-source-update-header-and-footer file-path n-newlines))
          ((equal routed-ext "tex")
           (--ehf-tex-update-header-and-footer file-path n-newlines))
          ((or

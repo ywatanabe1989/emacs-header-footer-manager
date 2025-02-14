@@ -1,13 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:15:31>
+;;; Timestamp: <2025-02-14 15:02:19>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-python.el
 
 (require 'ert)
 (require 'ehf-python)
-
-(defconst python-extensions
-  '("py"))
 
 (ert-deftest test-ehf-python-format-header
     ()
