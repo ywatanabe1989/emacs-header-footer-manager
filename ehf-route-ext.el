@@ -15,21 +15,21 @@ For example, yml -> yaml, bash -> sh"
   (cond
 
    ;; Shell scripts
-   ((member ext shell-extensions)
+   ((member ext ehf-shell-extensions)
     "sh")
 
    ;; Source
    ((or
      (null ext)
-     (member ext source-extensions))
+     (member ext ehf-source-extensions))
     "source")
 
    ;; YAML files
-   ((member ext yaml-extensions)
+   ((member ext ehf-yaml-extensions)
     "yaml")
 
    ;; LaTeX files
-   ((member ext tex-extensions)
+   ((member ext ehf-tex-extensions)
     "tex")
 
    ;; Web files

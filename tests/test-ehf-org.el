@@ -9,7 +9,7 @@
 (ert-deftest test-ehf-org-format-header
     ()
   (dolist
-      (ext org-extensions)
+      (ext ehf-org-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -22,7 +22,7 @@
 (ert-deftest test-ehf-org-format-footer
     ()
   (dolist
-      (ext org-extensions)
+      (ext ehf-org-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -35,7 +35,7 @@
 (ert-deftest test-ehf-org-update-header-and-footer
     ()
   (dolist
-      (ext org-extensions)
+      (ext ehf-org-extensions)
     (with-temp-buffer
       (let
           ((test-path

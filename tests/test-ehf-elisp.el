@@ -10,7 +10,7 @@
 (ert-deftest test-ehf-elisp-format-header
     ()
   (dolist
-      (ext elisp-extensions)
+      (ext ehf-ehf-elisp-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -23,7 +23,7 @@
 (ert-deftest test-ehf-elisp-format-footer
     ()
   (dolist
-      (ext elisp-extensions)
+      (ext ehf-ehf-elisp-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -36,7 +36,7 @@
 (ert-deftest test-ehf-elisp-update-header-and-footer
     ()
   (dolist
-      (ext elisp-extensions)
+      (ext ehf-ehf-elisp-extensions)
     (with-temp-buffer
       (let
           ((test-path

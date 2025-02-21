@@ -9,7 +9,7 @@
 (ert-deftest test-ehf-python-format-header
     ()
   (dolist
-      (ext python-extensions)
+      (ext ehf-python-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -22,7 +22,7 @@
 (ert-deftest test-ehf-python-format-footer
     ()
   (dolist
-      (ext python-extensions)
+      (ext ehf-python-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -35,7 +35,7 @@
 (ert-deftest test-ehf-python-update-header-and-footer
     ()
   (dolist
-      (ext python-extensions)
+      (ext ehf-python-extensions)
     (with-temp-buffer
       (let
           ((test-path

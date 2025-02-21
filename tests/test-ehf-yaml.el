@@ -9,7 +9,7 @@
 (ert-deftest test-ehf-yaml-format-header
     ()
   (dolist
-      (ext yaml-extensions)
+      (ext ehf-yaml-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -22,7 +22,7 @@
 (ert-deftest test-ehf-yaml-format-footer
     ()
   (dolist
-      (ext yaml-extensions)
+      (ext ehf-yaml-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -35,7 +35,7 @@
 (ert-deftest test-ehf-yaml-update-header-and-footer
     ()
   (dolist
-      (ext yaml-extensions)
+      (ext ehf-yaml-extensions)
     (with-temp-buffer
       (let
           ((test-path
