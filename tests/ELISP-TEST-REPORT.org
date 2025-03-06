@@ -1,0 +1,96 @@
+#+TITLE: Elisp Test Report
+#+AUTHOR: ywatanabe
+#+DATE: 2025-03-04 08:08:46Created by https://github.com/ywatanabe1989/emacs-test
+
+* Test Results Summary
+
+- Passed: 60
+- Failed: 0
+- Skipped: 0
+- Timeout (= 10 s): 0
+- Duplicates: 0
+- Total: 60
+- Total Time: 4.37 seconds
+- Success Rate: 100.0%
+
+* Test Coverage Metrics
+
+- Test Files: 15
+- Test Density: 4.00 tests per file
+
+** Passed Tests (60)
+*** test-ehf-base.el (5 tests)
+- [[file:test-ehf-base.el::test-ehf-base-with-buffer-insert][test-ehf-base-with-buffer-insert]]
+- [[file:test-ehf-base.el::test-ehf-base-insert-header-empty][test-ehf-base-insert-header-empty]]
+- [[file:test-ehf-base.el::test-ehf-base-insert-header-content][test-ehf-base-insert-header-content]]
+- [[file:test-ehf-base.el::test-ehf-base-insert-footer-empty][test-ehf-base-insert-footer-empty]]
+- [[file:test-ehf-base.el::test-ehf-base-insert-footer-content][test-ehf-base-insert-footer-content]]
+*** test-ehf-dired.el (1 tests)
+- [[file:test-ehf-dired.el::test-ehf-dired-update-header-footer][test-ehf-dired-update-header-footer]]
+*** test-ehf.el (13 tests)
+- [[file:test-ehf.el::test-ehf-base-loadable][test-ehf-base-loadable]]
+- [[file:test-ehf.el::test-ehf-variables-loadable][test-ehf-variables-loadable]]
+- [[file:test-ehf.el::test-ehf-registry-loadable][test-ehf-registry-loadable]]
+- [[file:test-ehf.el::test-ehf-elisp-loadable][test-ehf-elisp-loadable]]
+- [[file:test-ehf.el::test-ehf-markdown-loadable][test-ehf-markdown-loadable]]
+- [[file:test-ehf.el::test-ehf-org-loadable][test-ehf-org-loadable]]
+- [[file:test-ehf.el::test-ehf-python-loadable][test-ehf-python-loadable]]
+- [[file:test-ehf.el::test-ehf-shell-loadable][test-ehf-shell-loadable]]
+- [[file:test-ehf.el::test-ehf-tex-loadable][test-ehf-tex-loadable]]
+- [[file:test-ehf.el::test-ehf-yaml-loadable][test-ehf-yaml-loadable]]
+- [[file:test-ehf.el::test-ehf-update-header-and-footer-loadable][test-ehf-update-header-and-footer-loadable]]
+- [[file:test-ehf.el::test-ehf-dired-loadable][test-ehf-dired-loadable]]
+- [[file:test-ehf.el::test-ehf-route-ext-loadable][test-ehf-route-ext-loadable]]
+*** test-ehf-elisp.el (3 tests)
+- [[file:test-ehf-elisp.el::test-ehf-elisp-format-header][test-ehf-elisp-format-header]]
+- [[file:test-ehf-elisp.el::test-ehf-elisp-format-footer][test-ehf-elisp-format-footer]]
+- [[file:test-ehf-elisp.el::test-ehf-elisp-update-header-and-footer][test-ehf-elisp-update-header-and-footer]]
+*** test-ehf-markdown.el (3 tests)
+- [[file:test-ehf-markdown.el::test-ehf-markdown-format-header][test-ehf-markdown-format-header]]
+- [[file:test-ehf-markdown.el::test-ehf-markdown-format-footer][test-ehf-markdown-format-footer]]
+- [[file:test-ehf-markdown.el::test-ehf-markdown-update-header-and-footer][test-ehf-markdown-update-header-and-footer]]
+*** test-ehf-org.el (3 tests)
+- [[file:test-ehf-org.el::test-ehf-org-format-header][test-ehf-org-format-header]]
+- [[file:test-ehf-org.el::test-ehf-org-format-footer][test-ehf-org-format-footer]]
+- [[file:test-ehf-org.el::test-ehf-org-update-header-and-footer][test-ehf-org-update-header-and-footer]]
+*** test-ehf-python.el (3 tests)
+- [[file:test-ehf-python.el::test-ehf-python-format-header][test-ehf-python-format-header]]
+- [[file:test-ehf-python.el::test-ehf-python-format-footer][test-ehf-python-format-footer]]
+- [[file:test-ehf-python.el::test-ehf-python-update-header-and-footer][test-ehf-python-update-header-and-footer]]
+*** test-ehf-registry.el (3 tests)
+- [[file:test-ehf-registry.el::test-ehf-registry-register-file][test-ehf-registry-register-file]]
+- [[file:test-ehf-registry.el::test-ehf-registry-unregister-file][test-ehf-registry-unregister-file]]
+- [[file:test-ehf-registry.el::test-ehf-registry-toggle-file][test-ehf-registry-toggle-file]]
+*** test-ehf-route-ext.el (10 tests)
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-shell][test-ehf-route-ext-shell]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-source][test-ehf-route-ext-source]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-yaml][test-ehf-route-ext-yaml]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-tex][test-ehf-route-ext-tex]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-web][test-ehf-route-ext-web]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-cpp][test-ehf-route-ext-cpp]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-js][test-ehf-route-ext-js]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-ts][test-ehf-route-ext-ts]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-other][test-ehf-route-ext-other]]
+- [[file:test-ehf-route-ext.el::test-ehf-route-ext-unknown][test-ehf-route-ext-unknown]]
+*** test-ehf-shell.el (3 tests)
+- [[file:test-ehf-shell.el::test-ehf-shell-format-header][test-ehf-shell-format-header]]
+- [[file:test-ehf-shell.el::test-ehf-shell-format-footer][test-ehf-shell-format-footer]]
+- [[file:test-ehf-shell.el::test-ehf-shell-update-header-and-footer][test-ehf-shell-update-header-and-footer]]
+*** test-ehf-source.el (3 tests)
+- [[file:test-ehf-source.el::test-ehf-source-format-header][test-ehf-source-format-header]]
+- [[file:test-ehf-source.el::test-ehf-source-format-footer][test-ehf-source-format-footer]]
+- [[file:test-ehf-source.el::test-ehf-source-update-header-and-footer][test-ehf-source-update-header-and-footer]]
+*** test-ehf-tex.el (3 tests)
+- [[file:test-ehf-tex.el::test-ehf-tex-format-header][test-ehf-tex-format-header]]
+- [[file:test-ehf-tex.el::test-ehf-tex-format-footer][test-ehf-tex-format-footer]]
+- [[file:test-ehf-tex.el::test-ehf-tex-update-header-and-footer][test-ehf-tex-update-header-and-footer]]
+*** test-ehf-update-header-and-footer.el (2 tests)
+- [[file:test-ehf-update-header-and-footer.el::test-ehf-update-header-and-footer-excluded-file][test-ehf-update-header-and-footer-excluded-file]]
+- [[file:test-ehf-update-header-and-footer.el::test-ehf-update-header-and-footer-ehf-supported-extensions][test-ehf-update-header-and-footer-ehf-supported-extensions]]
+*** test-ehf-variables.el (2 tests)
+- [[file:test-ehf-variables.el::test-ehf-exclude-files-exists][test-ehf-exclude-files-exists]]
+- [[file:test-ehf-variables.el::test-ehf-exclude-files-is-list][test-ehf-exclude-files-is-list]]
+*** test-ehf-yaml.el (3 tests)
+- [[file:test-ehf-yaml.el::test-ehf-yaml-format-header][test-ehf-yaml-format-header]]
+- [[file:test-ehf-yaml.el::test-ehf-yaml-format-footer][test-ehf-yaml-format-footer]]
+- [[file:test-ehf-yaml.el::test-ehf-yaml-update-header-and-footer][test-ehf-yaml-update-header-and-footer]]

@@ -1,5 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
+;;; Timestamp: <2025-03-06 13:38:35>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
+
+;;; -*- coding: utf-8; lexical-binding: t -*-
+;;; Author: ywatanabe
 ;;; Timestamp: <2025-02-14 13:46:11>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -32,7 +37,8 @@ Files listed in `ehf-exclude-files' will be skipped."
          ((equal routed-ext "el")
           (--ehf-elisp-update-header-and-footer file-path n-newlines))
          ((equal routed-ext "md")
-          (--ehf-markdown-update-header-and-footer file-path n-newlines))
+          (--ehf-markdown-update-header-and-footer file-path
+                                                   n-newlines))
          ((equal routed-ext "org")
           (--ehf-org-update-header-and-footer file-path n-newlines))
          ((equal routed-ext "py")
@@ -96,7 +102,8 @@ Files listed in `ehf-exclude-files' will be skipped."
         (equal routed-ext expected-routed-ext)
       ;; Insert content
       (--ehf-base-remove-headers header-pattern ext file-path)
-      (--ehf-base-insert-header header-template header-format-fn file-path n-new-lines)
+      (--ehf-base-insert-header header-template header-format-fn
+                                file-path n-new-lines)
       (--ehf-base-remove-footers footer-pattern ext file-path)
       (--ehf-base-insert-footer footer-format-fn file-path n-new-lines)
       ;; Mark buffer as modified
