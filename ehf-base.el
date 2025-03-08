@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 14:21:48>
+;;; Timestamp: <2025-03-07 08:59:30>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-base.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -133,7 +133,8 @@
     (when
         (equal routed-ext expected-routed-ext)
       (--ehf-base-remove-headers header-pattern ext file-path)
-      (--ehf-base-insert-header header-template header-format-fn file-path n-new-lines)
+      (--ehf-base-insert-header header-template header-format-fn
+                                file-path n-new-lines)
       (--ehf-base-remove-footers footer-pattern ext file-path)
       (--ehf-base-insert-footer footer-format-fn file-path n-new-lines))))
 

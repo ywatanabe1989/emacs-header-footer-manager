@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-06 13:38:53>
+;;; Timestamp: <2025-03-08 11:50:11>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-shell.el
 
 (require 'ehf-base)
@@ -12,13 +12,7 @@
   "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}\")\" && pwd)\"\nLOG_PATH=\"$0.log\"\ntouch \"$LOG_PATH\"\n")
 
 (defconst --ehf-shell-header-pattern
-  "\\(^#!/bin/.*sh\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}\")\" && pwd)\"\nLOG_PATH=\"\\$0.log\"\ntouch \"\\$LOG_PATH\"\n$\\)")
-
-;; (defconst --ehf-shell-header-template
-;;   "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\nLOG_PATH=\"$0.log\"\ntouch \"$LOG_PATH\"\n")
-
-;; (defconst --ehf-shell-header-pattern
-;;   "\\(^#!/bin/.*sh\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"\nLOG_PATH=\"\\$0.log\"\ntouch \"\\$LOG_PATH\"\n$\\)")
+  "\\(^#!/bin/.*sh\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\${#BASH_SOURCE\\[@\\]} - 1\\]}\")\" \\&\\& pwd)\"\nLOG_PATH=\"\\$0.log\"\ntouch \"\\$LOG_PATH\"\n$\\)")
 
 ;; Footer Variables
 ;; ----------------------------------------
