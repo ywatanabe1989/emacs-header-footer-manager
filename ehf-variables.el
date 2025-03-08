@@ -1,12 +1,8 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 15:23:47>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-variables.el
+;;; Timestamp: <2025-02-20 08:51:39>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-variables.el
 
-;;; -*- coding: utf-8; lexical-binding: t -*-
-;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:04>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-variables.el
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 ;; Customization Group
@@ -27,56 +23,56 @@
 ;; Definitions
 ;; ----------------------------------------
 
-(defcustom elisp-extensions
+(defcustom ehf-elisp-extensions
   '("el")
   "List of Elisp file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom markdown-extensions
+(defcustom ehf-markdown-extensions
   '("md")
   "List of Markdown file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom org-extensions
+(defcustom ehf-org-extensions
   '("org")
   "List of Org file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom python-extensions
+(defcustom ehf-python-extensions
   '("py")
   "List of Python file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom shell-extensions
+(defcustom ehf-shell-extensions
   '("sh" "bash")
   "List of Shell script file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom source-extensions
+(defcustom ehf-source-extensions
   '("source" "src" "conf" "config" "def" "rc" "profile")
   "List of general source file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom tex-extensions
+(defcustom ehf-tex-extensions
   '("tex" "latex")
   "List of TeX file extensions."
   :type
   '(repeat string)
   :group 'ehf)
 
-(defcustom yaml-extensions
+(defcustom ehf-yaml-extensions
   '("yaml" "yml")
   "List of YAML file extensions."
   :type

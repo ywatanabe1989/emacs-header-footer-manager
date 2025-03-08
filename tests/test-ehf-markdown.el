@@ -10,7 +10,7 @@
 (ert-deftest test-ehf-markdown-format-header
     ()
   (dolist
-      (ext markdown-extensions)
+      (ext ehf-markdown-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -23,7 +23,7 @@
 (ert-deftest test-ehf-markdown-format-footer
     ()
   (dolist
-      (ext markdown-extensions)
+      (ext ehf-markdown-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -36,7 +36,7 @@
 (ert-deftest test-ehf-markdown-update-header-and-footer
     ()
   (dolist
-      (ext markdown-extensions)
+      (ext ehf-markdown-extensions)
     (with-temp-buffer
       (let
           ((test-path

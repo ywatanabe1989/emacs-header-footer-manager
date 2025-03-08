@@ -1,7 +1,7 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
-# Timestamp: "2025-02-14 14:53:31 (ywatanabe)"
-# File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/run-tests.sh
+# Timestamp: "2025-02-21 12:09:26 (ywatanabe)"
+# File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/run-tests.sh
 
 THIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_PATH="$0.log"

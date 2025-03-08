@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 15:02:33>
+;;; Timestamp: <2025-03-08 11:46:20>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-shell.el
 
 (require 'ert)
@@ -9,7 +9,7 @@
 (ert-deftest test-ehf-shell-format-header
     ()
   (dolist
-      (ext shell-extensions)
+      (ext ehf-shell-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -22,7 +22,7 @@
 (ert-deftest test-ehf-shell-format-footer
     ()
   (dolist
-      (ext shell-extensions)
+      (ext ehf-shell-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -35,7 +35,7 @@
 (ert-deftest test-ehf-shell-update-header-and-footer
     ()
   (dolist
-      (ext shell-extensions)
+      (ext ehf-shell-extensions)
     (with-temp-buffer
       (let
           ((test-path

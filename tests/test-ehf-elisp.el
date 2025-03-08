@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 15:01:40>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
+;;; Timestamp: <2025-02-21 12:08:57>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-elisp.el
 
 (require 'ert)
 (require 'ehf-elisp)
@@ -10,7 +10,7 @@
 (ert-deftest test-ehf-elisp-format-header
     ()
   (dolist
-      (ext elisp-extensions)
+      (ext ehf-elisp-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -23,7 +23,7 @@
 (ert-deftest test-ehf-elisp-format-footer
     ()
   (dolist
-      (ext elisp-extensions)
+      (ext ehf-elisp-extensions)
     (let
         ((test-path
           (format "/tmp/test-file.%s" ext))
@@ -36,7 +36,7 @@
 (ert-deftest test-ehf-elisp-update-header-and-footer
     ()
   (dolist
-      (ext elisp-extensions)
+      (ext ehf-elisp-extensions)
     (with-temp-buffer
       (let
           ((test-path

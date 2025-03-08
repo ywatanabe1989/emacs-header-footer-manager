@@ -1,10 +1,15 @@
 #!/bin/bash
 # -*- coding: utf-8 -*-
-# Timestamp: "2025-02-14 15:24:17 (ywatanabe)"
+# Timestamp: "2025-03-08 11:29:15 (ywatanabe)"
 # File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/examples/example.src
 
-THIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+THIS_DIR="$(cd "$(dirname "${BASH_SOURCE[${#BASH_SOURCE[@]} - 1]}")" && pwd)"
 
-(FILE CONTENTS HERE)
+
+
+
+
+aaa
+bbb
 
 # EOF

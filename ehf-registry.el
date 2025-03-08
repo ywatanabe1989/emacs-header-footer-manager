@@ -1,7 +1,8 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:01>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-registry.el
+;;; Timestamp: <2025-02-20 08:51:10>
+;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-registry.el
+
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 ;; Exclusion Functions

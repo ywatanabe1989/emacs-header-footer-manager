@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 15:17:01>
+;;; Timestamp: <2025-03-05 20:20:26>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-route-ext.el
 
 ;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -15,21 +15,21 @@ For example, yml -> yaml, bash -> sh"
   (cond
 
    ;; Shell scripts
-   ((member ext shell-extensions)
+   ((member ext ehf-shell-extensions)
     "sh")
 
    ;; Source
    ((or
      (null ext)
-     (member ext source-extensions))
+     (member ext ehf-source-extensions))
     "source")
 
    ;; YAML files
-   ((member ext yaml-extensions)
+   ((member ext ehf-yaml-extensions)
     "yaml")
 
    ;; LaTeX files
-   ((member ext tex-extensions)
+   ((member ext ehf-tex-extensions)
     "tex")
 
    ;; Web files
@@ -54,7 +54,8 @@ For example, yml -> yaml, bash -> sh"
     "ts")
    ;; Other types stay as-is
    ((member ext
-            '("el" "md" "org" "py" "html" "css" "js" "ts" "cpp" "c" "java" "go" "rs" "rb"))
+            '("el" "md" "org" "py" "html" "css" "js" "ts" "cpp" "c"
+              "java" "go" "rs" "rb"))
     ext)
    (t nil)))
 

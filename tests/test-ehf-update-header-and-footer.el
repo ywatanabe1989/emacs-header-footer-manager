@@ -23,7 +23,7 @@
     (setq ehf-exclude-files
           (delete test-file ehf-exclude-files))))
 
-(ert-deftest test-ehf-update-header-and-footer-supported-extensions
+(ert-deftest test-ehf-update-header-and-footer-ehf-supported-extensions
     ()
   (dolist
       (ext extensions)
