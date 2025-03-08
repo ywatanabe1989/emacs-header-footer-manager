@@ -1,5 +1,5 @@
 <!-- ---
-!-- Timestamp: 2025-03-08 11:38:35
+!-- Timestamp: 2025-03-08 11:53:42
 !-- Author: ywatanabe
 !-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
@@ -23,7 +23,7 @@ Automatic header and footer management in Emacs.
 ## Supported Extensions
 
 - Shell: [.sh](./examples/example.sh?plain=1), [.bash](./examples/example.bash?plain=1)
-- Source: [.source](./examples/example.source?plain=1), [.src](./examples/example.src?plain=1), [.sh.source](./examples/example.sh.source?plain=1), [.conf](./examples/example.conf?plain=1), [.config](./examples/example.config?plain=1), [.def](./examples/example.def?plain=1), [.rc](./examples/example.rc?plain=1), [.profile](./examples/example.profile?plain=1)
+- Source: [.src](./examples/example.src?plain=1)
 - Elisp: [.el](./examples/example.el?plain=1)
 - Markdown: [.md](./examples/example.md?plain=1)
 - Org: [.org](./examples/example.org?plain=1)
