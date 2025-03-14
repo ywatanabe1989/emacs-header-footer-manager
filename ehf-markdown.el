@@ -1,33 +1,41 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 14:54:18>
+;;; Timestamp: <2025-03-14 13:49:29>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-markdown.el
 
-;;; -*- coding: utf-8; lexical-binding: t -*-
-;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:00>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-markdown.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
 
-(defconst --ehf-markdown-header-template
-  "<!-- ---\n!-- Timestamp: %s\n!-- Author: %s\n!-- File: %s\n!-- --- -->\n")
+(defcustom --ehf-markdown-header-template
+  "<!-- ---\n!-- Timestamp: %s\n!-- Author: %s\n!-- File: %s\n!-- --- -->\n"
+  "Header template for markdown files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-markdown-header-pattern
-  "\\(<!-- ---\n!-- Timestamp:.*\n!-- Author:.*\n!-- File:.*\n!-- --- -->\n\\)")
+(defcustom --ehf-markdown-header-pattern
+  "\\(<!-- ---\n!-- Timestamp:.*\n!-- Author:.*\n!-- File:.*\n!-- --- -->\n\\)"
+  "Header pattern for markdown files."
+  :type 'string
+  :group 'ehf)
 
 ;; Footer Variables
 ;; ----------------------------------------
 
-(defconst --ehf-markdown-footer-template
-  "<!-- EOF -->")
+(defcustom --ehf-markdown-footer-template
+  "<!-- EOF -->"
+  "Footer template for markdown files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-markdown-footer-pattern
-  "\\(<!-- EOF -->\\)\\s-*$")
+(defcustom --ehf-markdown-footer-pattern
+  "\\(<!-- EOF -->\\)\\s-*$"
+  "Footer pattern for markdown files."
+  :type 'string
+  :group 'ehf)
 
 ;; Formatters
 ;; ----------------------------------------

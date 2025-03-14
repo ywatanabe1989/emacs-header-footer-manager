@@ -1,8 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 13:48:21>
+;;; Timestamp: <2025-03-14 13:49:29>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 ;; Add to load path
 (add-to-list 'load-path

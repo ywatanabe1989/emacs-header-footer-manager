@@ -1,39 +1,65 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 15:17:59>
+;;; Timestamp: <2025-03-14 14:46:52>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-tex.el
 
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
 
-(defconst --ehf-tex-header-template
-  "%%%% -*- coding: utf-8 -*-\n%%%% Timestamp: \"%s (%s)\"\n%%%% File: %s\n")
+(defcustom --ehf-tex-header-template
+  "%%%% -*- coding: utf-8 -*-\n%%%% Timestamp: \"%s (%s)\"\n%%%% File: \"%s\""
+  "Header template for tex files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-tex-header-pattern
-  "\\(%% -\\*-.*-\\*-\n%% Timestamp:.*\n%% File:.*\n$\\)")
+(defcustom --ehf-tex-header-pattern
+  "\\(%% -\\*- coding: utf-8 -\\*-\n%% Timestamp: \".*\"\n%% File: \".*\"\\)"
+  "Header pattern for tex files."
+  :type 'string
+  :group 'ehf)
 
 ;; Footer Variables
 ;; ----------------------------------------
 
-(defconst --ehf-tex-footer-template
-  "%% EOF")
+(defcustom --ehf-tex-footer-template
+  "%%%% EOF"
+  "Footer template for tex files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-tex-footer-pattern
-  "\\(^%% EOF\\)\\s-*$")
+(defcustom --ehf-tex-footer-pattern
+  "\\(^%%%% EOF\\s-*$\\)"
+  "Footer pattern for Tex files."
+  :type 'string
+  :group 'ehf)
 
 ;; Formatters
 ;; ----------------------------------------
 
 (defun --ehf-tex-format-header
-    (file-path)
-  (format --ehf-tex-header-template
-          (format-time-string "%Y-%m-%d %H:%M:%S")
-          (user-login-name)
-          file-path))
+    (&optional file-path)
+  "Format Tex header for FILE-PATH or current buffer's file."
+  (let*
+      ((path
+        (or file-path buffer-file-name))
+       (default-directory
+        (file-name-directory path))
+       (git-root
+        (locate-dominating-file default-directory ".git"))
+       (git-path
+        (if git-root
+            (file-relative-name path git-root)
+          path))
+       (git-path-dot
+        (concat "./" git-path)))
+    (format --ehf-tex-header-template
+            (format-time-string "%Y-%m-%d %H:%M:%S")
+            (user-login-name)
+            path)))
 
 (defun --ehf-tex-format-footer
     (&optional file-path)

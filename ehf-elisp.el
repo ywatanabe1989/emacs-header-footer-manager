@@ -1,58 +1,45 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 14:21:55>
+;;; Timestamp: <2025-03-14 13:49:29>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-elisp.el
 
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
+
 (defcustom --ehf-elisp-header-template
-  ";;; -*- coding: utf-8; lexical-binding: t -*-\n;;; Author: %s\n;;; Timestamp: <%s>\n;;; File: %s\n"
-  "Template for Elisp file headers."
+  ";;; -*- coding: utf-8; lexical-binding: t -*-\n;;; Author: %s\n;;; Timestamp: <%s>\n;;; File: %s\n\n;;; Copyright (C) %s Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)"
+  "Header template for Elisp files."
   :type 'string
   :group 'ehf)
 
 (defcustom --ehf-elisp-header-pattern
-  "\\(^;;; -\\*-.*\n;;; Author:.*\n;;; Timestamp:.*\n;;; File:.*\n$\\)"
-  "Regular expression pattern to match Elisp file headers."
+  "\\(^;;; -\\*-.*\n;;; Author:.*\n;;; Timestamp:.*\n;;; File:.*\n\n;;; Copyright (C) .* Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)$\\)"
+  "Header pattern for Elisp files."
   :type 'string
   :group 'ehf)
 
 ;; Footer Variables
 ;; ----------------------------------------
+
 (defcustom --ehf-elisp-footer-template
   "(provide '%s)\n\n(when\n    (not load-file-name)\n  (message \"%s.el loaded.\"\n           (file-name-nondirectory\n            (or load-file-name buffer-file-name))))"
-  "Template for Elisp file footers."
+  "Footer template for Elisp files."
   :type 'string
   :group 'ehf)
 
 (defcustom --ehf-elisp-footer-pattern
   "\\(^(provide '[^)]+)\\s-*\n\n(when[[:space:]\n]*(not[[:space:]\n]*load-file-name)[[:space:]\n]*(message[[:space:]\n]*\".*\"[[:space:]\n]*(file-name-nondirectory[[:space:]\n]*(or[[:space:]\n]*load-file-name[[:space:]\n]*buffer-file-name))))$\\)"
-  "Regular expression pattern to match Elisp file footers."
+  "Footer pattern for Elisp files."
   :type 'string
   :group 'ehf)
 
-;; ;; Header Variables
-;; ;; ----------------------------------------
-;; (defconst --ehf-elisp-header-template
-;;   ";;; -*- coding: utf-8; lexical-binding: t -*-\n;;; Author: %s\n;;; Timestamp: <%s>\n;;; File: %s\n")
-
-;; (defconst --ehf-elisp-header-pattern
-;;   "\\(^;;; -\\*-.*\n;;; Author:.*\n;;; Timestamp:.*\n;;; File:.*\n$\\)")
-
-;; ;; Footer Variables
-;; ;; ----------------------------------------
-;; (defconst --ehf-elisp-footer-template
-;;   "(provide '%s)\n\n(when\n    (not load-file-name)\n  (message \"%s.el loaded.\"\n           (file-name-nondirectory\n            (or load-file-name buffer-file-name))))")
-
-;; (defconst --ehf-elisp-footer-pattern
-;;   "\\(^(provide '[^)]+)\\s-*\n\n(when[[:space:]\n]*(not[[:space:]\n]*load-file-name)[[:space:]\n]*(message[[:space:]\n]*\".*\"[[:space:]\n]*(file-name-nondirectory[[:space:]\n]*(or[[:space:]\n]*load-file-name[[:space:]\n]*buffer-file-name))))$\\)")
-
 ;; Formatters
 ;; ----------------------------------------
+
 (defun --ehf-elisp-format-header
     (&optional file-path)
   "Format Elisp header for FILE-PATH or current buffer's file."
@@ -62,7 +49,8 @@
     (format --ehf-elisp-header-template
             (user-login-name)
             (format-time-string "%Y-%m-%d %H:%M:%S")
-            path)))
+            path
+            (format-time-string "%Y"))))
 
 (defun --ehf-elisp-format-footer
     (&optional file-path)

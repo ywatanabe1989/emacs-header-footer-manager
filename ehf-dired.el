@@ -1,8 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:00>
+;;; Timestamp: <2025-03-14 13:49:28>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-dired.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-update-header-and-footer)
 

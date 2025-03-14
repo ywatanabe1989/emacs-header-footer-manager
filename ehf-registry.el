@@ -1,9 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-20 08:51:10>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/ehf-registry.el
+;;; Timestamp: <2025-03-14 13:49:30>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-registry.el
 
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 ;; Exclusion Functions
 ;; ----------------------------------------
@@ -79,7 +79,8 @@
               (progn
                 (setq ehf-exclude-files
                       (delete expanded-file ehf-exclude-files))
-                (message "Removed %s from exclusion list" buffer-file-name))
+                (message "Removed %s from exclusion list"
+                         buffer-file-name))
             (add-to-list 'ehf-exclude-files expanded-file)
             (message "Added %s to exclusion list" buffer-file-name)))
       (message "No file to toggle"))))

@@ -1,7 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:05:59>
+;;; Timestamp: <2025-03-14 13:49:19>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-base.el
+
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ert)
 (require 'ehf-base)

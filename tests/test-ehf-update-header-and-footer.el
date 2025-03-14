@@ -1,14 +1,16 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 06:16:26>
+;;; Timestamp: <2025-03-14 13:49:22>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-update-header-and-footer.el
+
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ert)
 (require 'ehf-update-header-and-footer)
 (require 'ehf-variables)
 
-(defconst extensions
-  '("el" "md" "org" "py" "sh" "tex" "yaml" "yml"))
+(defvar extensions
+  '("el" "md" "org" "py" "sh" "src" "tex" "yaml" "yml"))
 
 (ert-deftest test-ehf-update-header-and-footer-excluded-file
     ()
@@ -23,7 +25,8 @@
     (setq ehf-exclude-files
           (delete test-file ehf-exclude-files))))
 
-(ert-deftest test-ehf-update-header-and-footer-ehf-supported-extensions
+(ert-deftest
+    test-ehf-update-header-and-footer-ehf-supported-extensions
     ()
   (dolist
       (ext extensions)

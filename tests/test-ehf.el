@@ -1,13 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 15:21:23>
+;;; Timestamp: <2025-03-14 13:49:19>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf.el
 
-;;; -*- coding: utf-8; lexical-binding: t -*-
-;;; Author: ywatanabe
-;;; Timestamp: <2025-02-11 23:35:46>
-;;; File: /home/ywatanabe/.dotfiles/.emacs.d/lisp/emacs-header-footer/tests/test-ehf.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ert)
 

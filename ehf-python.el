@@ -1,9 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-28 01:05:30>
+;;; Timestamp: <2025-03-14 14:27:36>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
 
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'projectile)
 (require 'ehf-base)
@@ -11,20 +11,32 @@
 ;; Header Variables
 ;; ----------------------------------------
 
-(defconst --ehf-python-header-template
-  "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nTHIS_FILE = \"%s\"")
+(defcustom --ehf-python-header-template
+  "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nimport os\n__THIS_FILE__ = (\n    \"%s\"\n)\n__THIS_DIR__ = os.dirname(__THIS_FILE__)"
+  "Header template for Python files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-python-header-pattern
-  "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nTHIS_FILE = \".*\"$\\)")
+(defcustom --ehf-python-header-pattern
+  "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nimport os\n__THIS_FILE__ = (\n    \".*\"\n)\n__THIS_DIR__ = os.dirname(__THIS_FILE__)$\\)"
+  "Header pattern for Python files."
+  :type 'string
+  :group 'ehf)
 
 ;; Footer Variables
 ;; ----------------------------------------
 
-(defconst --ehf-python-footer-template
-  "# EOF")
+(defcustom --ehf-python-footer-template
+  "# EOF"
+  "Footer template for Python files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-python-footer-pattern
-  "\\(^# EOF$\\)\\s-*$")
+(defcustom --ehf-python-footer-pattern
+  "\\(^# EOF$\\)"
+  "Footer pattern for Python files."
+  :type 'string
+  :group 'ehf)
 
 ;; Formatters
 ;; ----------------------------------------
@@ -70,7 +82,8 @@
     (format --ehf-python-footer-template
             src-path
             (replace-regexp-in-string "/" "."
-                                      (replace-regexp-in-string "^[^/]*/" "" module-path)))))
+                                      (replace-regexp-in-string
+                                       "^[^/]*/" "" module-path)))))
 
 ;; Updater
 ;; ----------------------------------------
