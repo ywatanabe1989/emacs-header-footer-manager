@@ -1,13 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-06 13:38:35>
+;;; Timestamp: <2025-03-14 13:49:31>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
 
-;;; -*- coding: utf-8; lexical-binding: t -*-
-;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 13:46:11>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-route-ext)
 

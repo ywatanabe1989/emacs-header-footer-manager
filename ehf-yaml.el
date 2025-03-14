@@ -1,29 +1,41 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 14:24:56>
+;;; Timestamp: <2025-03-14 13:56:36>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-yaml.el
 
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
 
-(defconst --ehf-yaml-header-template
-  "# Timestamp: \"%s (%s)\"\n# File: %s\n")
+(defcustom --ehf-yaml-header-template
+  "# Timestamp: \"%s (%s)\"\n# File: %s"
+  "Header template for tex files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-yaml-header-pattern
-  "\\(^# Timestamp: \".* .* (.*)\"\n# File: .*\n$\\)")
+(defcustom --ehf-yaml-header-pattern
+  "\\(^# Timestamp: \".* .* (.*)\"\n# File: .*$\\)"
+  "Header pattern for tex files."
+  :type 'string
+  :group 'ehf)
 
 ;; Footer Variables
 ;; ----------------------------------------
 
-(defconst --ehf-yaml-footer-template
-  "# EOF")
+(defcustom --ehf-yaml-footer-template
+  "# EOF"
+  "Footer template for tex files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-yaml-footer-pattern
-  "\\(^# EOF\\)\\s-*$")
+(defcustom --ehf-yaml-footer-pattern
+  "\\(^# EOF\\s-*$\\)"
+  "Footer pattern for tex files."
+  :type 'string
+  :group 'ehf)
 
 ;; Formatters
 ;; ----------------------------------------

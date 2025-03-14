@@ -1,33 +1,41 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 14:54:17>
+;;; Timestamp: <2025-03-14 13:49:29>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-org.el
 
-;;; -*- coding: utf-8; lexical-binding: t -*-
-;;; Author: ywatanabe
-;;; Timestamp: <2025-02-14 05:03:01>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-org.el
-;;; Copyright (C) 2024-2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
 
-(defconst --ehf-org-header-template
-  "# Timestamp: \"%s (%s)\"\n# File: %s\n")
+(defcustom --ehf-org-header-template
+  "# Timestamp: \"%s (%s)\"\n# File: %s\n"
+  "Header template for Org files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-org-header-pattern
-  "\\(# Timestamp:.*\n# File:.*\n\\)")
+(defcustom --ehf-org-header-pattern
+  "\\(# Timestamp:.*\n# File:.*\n\\)"
+  "Header pattern for Org files."
+  :type 'string
+  :group 'ehf)
 
 ;; Footer Variables
 ;; ----------------------------------------
 
-(defconst --ehf-org-footer-template
-  "# EOF")
+(defcustom --ehf-org-footer-template
+  "# EOF"
+  "Footer template for Org files."
+  :type 'string
+  :group 'ehf)
 
-(defconst --ehf-org-footer-pattern
-  "\\(# EOF\\)\\s-*$")
+(defcustom --ehf-org-footer-pattern
+  "\\(# EOF\\)\\s-*$"
+  "Footer pattern for Org files."
+  :type 'string
+  :group 'ehf)
 
 ;; Formatters
 ;; ----------------------------------------
