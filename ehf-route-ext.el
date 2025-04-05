@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 13:49:30>
+;;; Timestamp: <2025-04-05 15:56:33>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-route-ext.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -20,7 +20,7 @@ For example, yml -> yaml, bash -> sh"
 
    ;; Source
    ((or
-     (null ext)
+     ;; (null ext)
      (member ext ehf-source-extensions))
     "source")
 
