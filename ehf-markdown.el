@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 13:49:29>
+;;; Timestamp: <2025-03-15 15:44:01>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-markdown.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -32,7 +32,7 @@
   :group 'ehf)
 
 (defcustom --ehf-markdown-footer-pattern
-  "\\(<!-- EOF -->\\)\\s-*$"
+  "\\(^<!-- EOF -->$\\)"
   "Footer pattern for markdown files."
   :type 'string
   :group 'ehf)
