@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 14:27:36>
+;;; Timestamp: <2025-03-15 01:15:23>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -11,14 +11,50 @@
 ;; Header Variables
 ;; ----------------------------------------
 
+;; (defcustom --ehf-python-header-template
+;;   "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nimport os\n\n__FILE__ = (\n    \"%s\"\n)\n\n__DIR__ = os.path.dirname(__FILE__)"
+;;   "Header template for Python files."
+;;   :type 'string
+;;   :group 'ehf)
+
+;; (defcustom --ehf-python-header-pattern
+;;   "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nimport os\n\n__FILE__ = (\n    \".*\"\n)\n\n__DIR__ = os.path.dirname(__FILE__)\n\n__FILE__ = \".*\"\n\n__DIR__ = os.path.dirname(__FILE__)$\\)"
+;;   "Header pattern for Python files."
+;;   :type 'string
+;;   :group 'ehf)
+
 (defcustom --ehf-python-header-template
-  "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nimport os\n__THIS_FILE__ = (\n    \"%s\"\n)\n__THIS_DIR__ = os.dirname(__THIS_FILE__)"
+  "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-
+# Timestamp: \"%s (%s)\"
+# File: %s
+# ----------------------------------------
+import os
+__FILE__ = (
+    \"%s\"
+)
+__DIR__ = os.path.dirname(__FILE__)
+# ----------------------------------------"
   "Header template for Python files."
   :type 'string
   :group 'ehf)
 
 (defcustom --ehf-python-header-pattern
-  "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nimport os\n__THIS_FILE__ = (\n    \".*\"\n)\n__THIS_DIR__ = os.dirname(__THIS_FILE__)$\\)"
+  "\\(^#!/usr/bin/env python3
+# -\\*- coding: utf-8 -\\*-
+# Timestamp: \".* (.*)\"
+# File: .*
+
+import os
+
+__FILE__ = (
+    \".*\"
+)
+
+__DIR__ = os.path.dirname(__FILE__)
+
+__FILE__ = \".*\"
+
+# ----------------------------------------$\\)"
   "Header pattern for Python files."
   :type 'string
   :group 'ehf)
