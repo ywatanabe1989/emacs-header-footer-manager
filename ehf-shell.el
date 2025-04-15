@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 14:00:04>
+;;; Timestamp: <2025-04-16 04:02:31>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-shell.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -11,13 +11,13 @@
 ;; ----------------------------------------
 
 (defcustom --ehf-shell-header-template
-  "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\nLOG_PATH=\"$0.log\"\ntouch \"$LOG_PATH\"\n"
+  "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\nLOG_PATH=\".$0.log\"\ntouch \"$LOG_PATH\"\n"
   "Header template for shell script files."
   :type 'string
   :group 'ehf)
 
 (defcustom --ehf-shell-header-pattern
-  "\\(^#!/bin/.*sh\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"\nLOG_PATH=\"\\$0.log\"\ntouch \"\\$LOG_PATH\"\n$\\)"
+  "\\(^#!/bin/.*sh\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"\nLOG_PATH=\".\\$0.log\"\ntouch \"\\$LOG_PATH\"\n$\\)"
   "Header pattern for shell script files."
   :type 'string
   :group 'ehf)
