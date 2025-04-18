@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 18:28:11>
+;;; Timestamp: <2025-04-17 07:08:38>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-variables.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -61,6 +61,13 @@
 (defcustom ehf-source-extensions
   '("src")
   "List of general source file extensions."
+  :type
+  '(repeat string)
+  :group 'ehf)
+
+(defcustom ehf-source-filenames
+  '(".bashrc" "bashrc" ".bash_profile" ".profile" ".zshrc" ".kshrc")
+  "List of general source file names."
   :type
   '(repeat string)
   :group 'ehf)

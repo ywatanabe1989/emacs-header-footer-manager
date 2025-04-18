@@ -1,5 +1,5 @@
 <!-- ---
-!-- Timestamp: 2025-03-08 11:53:42
+!-- Timestamp: 2025-04-18 12:31:15
 !-- Author: ywatanabe
 !-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
 !-- --- -->
@@ -73,6 +73,10 @@ M-x ehf-unregister-exclude-file ; Remove from list
 ;; Quick exclusion toggle
 (global-set-key (kbd "C-c <delete>") 'ehf-toggle-exclude-file)
 ```
+
+## TODO
+- [ ] Update test code
+- [ ] Add feature for initial insertion without update
 
 ## Contact
 

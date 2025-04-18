@@ -1,0 +1,344 @@
+# Timestamp: "2025-04-18 13:20:21 (ywatanabe)"
+# File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ELISP-TEST-REPORT-20250418-071533-92-PERCENT.org
+
+#+TITLE: Elisp Test Report
+#+AUTHOR: ywatanabe
+#+DATE: 2025-04-18 07:15:42 Created by https://github.com/ywatanabe1989/emacs-test
+
+* Test Results Summary
+
+- Passed: 59
+- Failed: 5
+- Skipped: 0
+- Timeout (= 10 s): 0
+- Duplicates: 0
+- Total: 64
+- Total Time: 4.39 seconds
+- Success Rate: 92.2%
+
+* Passed Tests (64)
+** test-ehf-base.el (5 tests)
+- [[file:tests/test-ehf-base.el::test-ehf-base-with-buffer-insert][test-ehf-base-with-buffer-insert]]
+- [[file:tests/test-ehf-base.el::test-ehf-base-insert-header-empty][test-ehf-base-insert-header-empty]]
+- [[file:tests/test-ehf-base.el::test-ehf-base-insert-header-content][test-ehf-base-insert-header-content]]
+- [[file:tests/test-ehf-base.el::test-ehf-base-insert-footer-empty][test-ehf-base-insert-footer-empty]]
+- [[file:tests/test-ehf-base.el::test-ehf-base-insert-footer-content][test-ehf-base-insert-footer-content]]
+** test-ehf-dired.el (1 tests)
+- [[file:tests/test-ehf-dired.el::test-ehf-dired-update-header-footer][test-ehf-dired-update-header-footer]]
+** test-ehf-elisp.el (3 tests)
+- [[file:tests/test-ehf-elisp.el::test-ehf-elisp-format-header][test-ehf-elisp-format-header]]
+- [[file:tests/test-ehf-elisp.el::test-ehf-elisp-format-footer][test-ehf-elisp-format-footer]]
+- [[file:tests/test-ehf-elisp.el::test-ehf-elisp-update-header-and-footer][test-ehf-elisp-update-header-and-footer]]
+** test-ehf-hook.el (4 tests)
+- [[file:tests/test-ehf-hook.el::test-ehf-hook-direct-call][test-ehf-hook-direct-call]]
+- [[file:tests/test-ehf-hook.el::test-ehf-hook-before-save-hook][test-ehf-hook-before-save-hook]]
+- [[file:tests/test-ehf-hook.el::test-ehf-hook-global-setup][test-ehf-hook-global-setup]]
+- [[file:tests/test-ehf-hook.el::test-ehf-hook-function-call-directly][test-ehf-hook-function-call-directly]]
+** test-ehf-markdown.el (3 tests)
+- [[file:tests/test-ehf-markdown.el::test-ehf-markdown-format-header][test-ehf-markdown-format-header]]
+- [[file:tests/test-ehf-markdown.el::test-ehf-markdown-format-footer][test-ehf-markdown-format-footer]]
+- [[file:tests/test-ehf-markdown.el::test-ehf-markdown-update-header-and-footer][test-ehf-markdown-update-header-and-footer]]
+** test-ehf-org.el (3 tests)
+- [[file:tests/test-ehf-org.el::test-ehf-org-format-header][test-ehf-org-format-header]]
+- [[file:tests/test-ehf-org.el::test-ehf-org-format-footer][test-ehf-org-format-footer]]
+- [[file:tests/test-ehf-org.el::test-ehf-org-update-header-and-footer][test-ehf-org-update-header-and-footer]]
+** test-ehf-python.el (3 tests)
+- [[file:tests/test-ehf-python.el::test-ehf-python-format-header][test-ehf-python-format-header]]
+  + Error details:
+    Selector: test-ehf-python-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:37+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:37+1000
+    
+    F
+    
+    F test-ehf-python-format-header
+        (ert-test-failed
+         ((should
+           (string-match-p --ehf-python-header-pattern
+                           (--ehf-python-format-header test-path)))
+          :form
+          (string-match-p
+           "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nimport os\n\n__FILE__ = (\n    \".*\"\n)\n\n__DIR__ = os.path.dirname(__FILE__)\n\n__FILE__ = \".*\"\n\n# ----------------------------------------$\\)"
+           "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"2025-04-18 07:15:37 (ywatanabe)\"\n# File: /tmp/test-file.py\n# ----------------------------------------\nimport os\n__FILE__ = (\n    \"/tmp/test-file.py\"\n)\n__DIR__ = os.path.dirname(__FILE__)\n# ----------------------------------------")
+          :value nil))
+    
+    
+    
+- [[file:tests/test-ehf-python.el::test-ehf-python-format-footer][test-ehf-python-format-footer]]
+- [[file:tests/test-ehf-python.el::test-ehf-python-update-header-and-footer][test-ehf-python-update-header-and-footer]]
+** test-ehf-registry.el (3 tests)
+- [[file:tests/test-ehf-registry.el::test-ehf-registry-register-file][test-ehf-registry-register-file]]
+- [[file:tests/test-ehf-registry.el::test-ehf-registry-unregister-file][test-ehf-registry-unregister-file]]
+- [[file:tests/test-ehf-registry.el::test-ehf-registry-toggle-file][test-ehf-registry-toggle-file]]
+** test-ehf-route-ext.el (10 tests)
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-shell][test-ehf-route-ext-shell]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-source][test-ehf-route-ext-source]]
+  + Error details:
+    Selector: test-ehf-route-ext-source
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-route-ext-source
+        (ert-test-failed
+         ((should (equal (--ehf-route-ext "source") "source")) :form
+          (equal nil "source") :value nil :explanation
+          (different-types nil "source")))
+    
+    
+    
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-yaml][test-ehf-route-ext-yaml]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-tex][test-ehf-route-ext-tex]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-web][test-ehf-route-ext-web]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-cpp][test-ehf-route-ext-cpp]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-js][test-ehf-route-ext-js]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-ts][test-ehf-route-ext-ts]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-other][test-ehf-route-ext-other]]
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-unknown][test-ehf-route-ext-unknown]]
+** test-ehf-shell.el (3 tests)
+- [[file:tests/test-ehf-shell.el::test-ehf-shell-format-header][test-ehf-shell-format-header]]
+  + Error details:
+    Selector: test-ehf-shell-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-shell-format-header
+        (ert-test-failed
+         ((should
+           (string-match-p --ehf-shell-header-pattern
+                           (--ehf-shell-format-header test-path)))
+          :form
+          (string-match-p
+           "\\(^#!/bin/.*sh\n\n# -\\*- coding: utf-8 -\\*-\n\n# Timestamp: \".* (.*)\"\n\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"\n\nLOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"\n\ntouch \"$LOG_PATH\" >/dev/null 2>\\&1\n\n# For removing legacy headers\n# ----------------------------------------\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"\n\nLOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"\n\nLOG_PATH=\".\\$0.log\"\n\nLOG_PATH=\"$0.log\"\n\ntouch \"\\$LOG_PATH\"$\\)"
+           "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"2025-04-18 07:15:38 (ywatanabe)\"\n# File: /tmp/test-file.sh\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\nLOG_PATH=\"$THIS_DIR/.$(basename \"$0\").log\"\ntouch \"$LOG_PATH\" >/dev/null 2>&1\n")
+          :value nil))
+    
+    
+    
+- [[file:tests/test-ehf-shell.el::test-ehf-shell-format-footer][test-ehf-shell-format-footer]]
+- [[file:tests/test-ehf-shell.el::test-ehf-shell-update-header-and-footer][test-ehf-shell-update-header-and-footer]]
+** test-ehf-source.el (3 tests)
+- [[file:tests/test-ehf-source.el::test-ehf-source-format-header][test-ehf-source-format-header]]
+  + Error details:
+    Selector: test-ehf-source-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-source-format-header
+        (ert-test-failed
+         ((should
+           (string-match-p --ehf-source-header-pattern
+                           (--ehf-source-format-header test-path)))
+          :form
+          (string-match-p
+           "\\(^#!/bin/.*sh\n\n# -\\*- coding: utf-8 -\\*-\n\n# Timestamp: \".* (.*)\"\n\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"\n\n# For removing legacy headers\n# ----------------------------------------\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"$\\)"
+           "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"2025-04-18 07:15:38 (ywatanabe)\"\n# File: /tmp/test-file.src\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\n")
+          :value nil))
+    
+    
+    
+- [[file:tests/test-ehf-source.el::test-ehf-source-format-footer][test-ehf-source-format-footer]]
+- [[file:tests/test-ehf-source.el::test-ehf-source-update-header-and-footer][test-ehf-source-update-header-and-footer]]
+** test-ehf-tex.el (3 tests)
+- [[file:tests/test-ehf-tex.el::test-ehf-tex-format-header][test-ehf-tex-format-header]]
+  + Error details:
+    Selector: test-ehf-tex-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-tex-format-header
+        (void-function string-match-p--ehf-tex-header-pattern)
+    
+    
+    
+- [[file:tests/test-ehf-tex.el::test-ehf-tex-format-footer][test-ehf-tex-format-footer]]
+- [[file:tests/test-ehf-tex.el::test-ehf-tex-update-header-and-footer][test-ehf-tex-update-header-and-footer]]
+** test-ehf-update-header-and-footer.el (2 tests)
+- [[file:tests/test-ehf-update-header-and-footer.el::test-ehf-update-header-and-footer-excluded-file][test-ehf-update-header-and-footer-excluded-file]]
+- [[file:tests/test-ehf-update-header-and-footer.el::test-ehf-update-header-and-footer-ehf-supported-extensions][test-ehf-update-header-and-footer-ehf-supported-extensions]]
+** test-ehf-variables.el (2 tests)
+- [[file:tests/test-ehf-variables.el::test-ehf-exclude-files-exists][test-ehf-exclude-files-exists]]
+- [[file:tests/test-ehf-variables.el::test-ehf-exclude-files-is-list][test-ehf-exclude-files-is-list]]
+** test-ehf-yaml.el (3 tests)
+- [[file:tests/test-ehf-yaml.el::test-ehf-yaml-format-header][test-ehf-yaml-format-header]]
+- [[file:tests/test-ehf-yaml.el::test-ehf-yaml-format-footer][test-ehf-yaml-format-footer]]
+- [[file:tests/test-ehf-yaml.el::test-ehf-yaml-update-header-and-footer][test-ehf-yaml-update-header-and-footer]]
+** test-ehf.el (13 tests)
+- [[file:tests/test-ehf.el::test-ehf-base-loadable][test-ehf-base-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-variables-loadable][test-ehf-variables-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-registry-loadable][test-ehf-registry-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-elisp-loadable][test-ehf-elisp-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-markdown-loadable][test-ehf-markdown-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-org-loadable][test-ehf-org-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-python-loadable][test-ehf-python-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-shell-loadable][test-ehf-shell-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-tex-loadable][test-ehf-tex-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-yaml-loadable][test-ehf-yaml-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-update-header-and-footer-loadable][test-ehf-update-header-and-footer-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-dired-loadable][test-ehf-dired-loadable]]
+- [[file:tests/test-ehf.el::test-ehf-route-ext-loadable][test-ehf-route-ext-loadable]]
+* Failed Tests (5)
+** test-ehf-python.el (1 tests)
+
+- [[file:tests/test-ehf-python.el::test-ehf-python-format-header][test-ehf-python-format-header]]
+  + Error details:
+    Selector: test-ehf-python-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:37+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:37+1000
+    
+    F
+    
+    F test-ehf-python-format-header
+        (ert-test-failed
+         ((should
+           (string-match-p --ehf-python-header-pattern
+                           (--ehf-python-format-header test-path)))
+          :form
+          (string-match-p
+           "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nimport os\n\n__FILE__ = (\n    \".*\"\n)\n\n__DIR__ = os.path.dirname(__FILE__)\n\n__FILE__ = \".*\"\n\n# ----------------------------------------$\\)"
+           "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"2025-04-18 07:15:37 (ywatanabe)\"\n# File: /tmp/test-file.py\n# ----------------------------------------\nimport os\n__FILE__ = (\n    \"/tmp/test-file.py\"\n)\n__DIR__ = os.path.dirname(__FILE__)\n# ----------------------------------------")
+          :value nil))
+    
+    
+    
+** test-ehf-route-ext.el (1 tests)
+- [[file:tests/test-ehf-route-ext.el::test-ehf-route-ext-source][test-ehf-route-ext-source]]
+  + Error details:
+    Selector: test-ehf-route-ext-source
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-route-ext-source
+        (ert-test-failed
+         ((should (equal (--ehf-route-ext "source") "source")) :form
+          (equal nil "source") :value nil :explanation
+          (different-types nil "source")))
+    
+    
+    
+** test-ehf-shell.el (1 tests)
+- [[file:tests/test-ehf-shell.el::test-ehf-shell-format-header][test-ehf-shell-format-header]]
+  + Error details:
+    Selector: test-ehf-shell-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-shell-format-header
+        (ert-test-failed
+         ((should
+           (string-match-p --ehf-shell-header-pattern
+                           (--ehf-shell-format-header test-path)))
+          :form
+          (string-match-p
+           "\\(^#!/bin/.*sh\n\n# -\\*- coding: utf-8 -\\*-\n\n# Timestamp: \".* (.*)\"\n\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"\n\nLOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"\n\ntouch \"$LOG_PATH\" >/dev/null 2>\\&1\n\n# For removing legacy headers\n# ----------------------------------------\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"\n\nLOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"\n\nLOG_PATH=\".\\$0.log\"\n\nLOG_PATH=\"$0.log\"\n\ntouch \"\\$LOG_PATH\"$\\)"
+           "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"2025-04-18 07:15:38 (ywatanabe)\"\n# File: /tmp/test-file.sh\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\nLOG_PATH=\"$THIS_DIR/.$(basename \"$0\").log\"\ntouch \"$LOG_PATH\" >/dev/null 2>&1\n")
+          :value nil))
+    
+    
+    
+** test-ehf-source.el (1 tests)
+- [[file:tests/test-ehf-source.el::test-ehf-source-format-header][test-ehf-source-format-header]]
+  + Error details:
+    Selector: test-ehf-source-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-source-format-header
+        (ert-test-failed
+         ((should
+           (string-match-p --ehf-source-header-pattern
+                           (--ehf-source-format-header test-path)))
+          :form
+          (string-match-p
+           "\\(^#!/bin/.*sh\n\n# -\\*- coding: utf-8 -\\*-\n\n# Timestamp: \".* (.*)\"\n\n# File: .*\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"\n\n# For removing legacy headers\n# ----------------------------------------\n\nTHIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"$\\)"
+           "#!/bin/bash\n# -*- coding: utf-8 -*-\n# Timestamp: \"2025-04-18 07:15:38 (ywatanabe)\"\n# File: /tmp/test-file.src\n\nTHIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"\n")
+          :value nil))
+    
+    
+    
+** test-ehf-tex.el (1 tests)
+- [[file:tests/test-ehf-tex.el::test-ehf-tex-format-header][test-ehf-tex-format-header]]
+  + Error details:
+    Selector: test-ehf-tex-format-header
+    Passed:  0
+    Failed:  1 (1 unexpected)
+    Skipped: 0
+    Total:   1/1
+    
+    Started at:   2025-04-18 07:15:38+1000
+    Finished.
+    Finished at:  2025-04-18 07:15:38+1000
+    
+    F
+    
+    F test-ehf-tex-format-header
+        (void-function string-match-p--ehf-tex-header-pattern)
+
+# EOF
