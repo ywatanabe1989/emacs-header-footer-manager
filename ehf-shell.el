@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-16 07:19:17>
+;;; Timestamp: <2025-04-17 08:03:51>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-shell.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -18,7 +18,7 @@
 
 THIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"
 LOG_PATH=\"$THIS_DIR/.\$(basename \"$0\").log\"
-touch \"$LOG_PATH\"
+touch \"$LOG_PATH\" >/dev/null 2>&1
 "
   "Header template for shell script files."
   :type 'string
@@ -45,6 +45,15 @@ touch \"$LOG_PATH\"
 # Timestamp: \".* (.*)\"
 
 # File: .*
+
+THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"
+
+LOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"
+
+touch \"$LOG_PATH\" >/dev/null 2>\\&1
+
+# For removing legacy headers
+# ----------------------------------------
 
 THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"
 
