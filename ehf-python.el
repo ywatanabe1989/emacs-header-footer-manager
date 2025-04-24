@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-15 01:15:23>
+;;; Timestamp: <2025-04-23 05:39:32>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -97,9 +97,8 @@ __FILE__ = \".*\"
             (format-time-string "%Y-%m-%d %H:%M:%S")
             (user-login-name)
             path
-            ;; git-path-dot)))
-            path)))
-
+            git-path-dot)))
+;; path)))
 (defun --ehf-python-format-footer
     (&optional file-path)
   "Format Python footer for FILE-PATH or current buffer's file."
