@@ -1,10 +1,12 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-22 08:11:12>
+;;; Timestamp: <2025-04-26 05:52:05>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-shell.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
+
+(require 'ehf-utils)
 (require 'ehf-base)
 
 ;; Header Variables
@@ -104,16 +106,37 @@ touch \"\\$LOG_PATH\"$\\)"
 ;; Formatters
 ;; ----------------------------------------
 
+;; (defun --ehf-shell-format-header
+;;     (&optional file-path)
+;;   "Format Shell header for FILE-PATH or current buffer's file."
+;;   (let*
+;;       ((path
+;;         (or file-path buffer-file-name))
+;;        (default-directory
+;;         (file-name-directory path))
+;;        (git-root
+;;         (locate-dominating-file default-directory ".git"))
+;;        (git-path
+;;         (if git-root
+;;             (file-relative-name path git-root)
+;;           path))
+;;        (git-path-dot
+;;         (concat "./" git-path)))
+;;     (format --ehf-shell-header-template
+;;             (format-time-string "%Y-%m-%d %H:%M:%S")
+;;             (user-login-name)
+;;             git-path-dot)))
+
 (defun --ehf-shell-format-header
     (&optional file-path)
   "Format Shell header for FILE-PATH or current buffer's file."
   (let*
-      ((path
-        (or file-path buffer-file-name)))
+      ((git-path-dot
+        (--ehf-utils-path-to-git-dot-path file-path)))
     (format --ehf-shell-header-template
             (format-time-string "%Y-%m-%d %H:%M:%S")
             (user-login-name)
-            path)))
+            git-path-dot)))
 
 (defun --ehf-shell-format-footer
     (&optional file-path)
@@ -161,6 +184,7 @@ touch \"\\$LOG_PATH\"$\\)"
 ;; ;; ;; Before Save Hook
 ;; ;; ;; ----------------------------------------
 ;; ;; (add-hook 'before-save-hook #'--ehf-shell-update-header-and-footer)
+
 
 (provide 'ehf-shell)
 
