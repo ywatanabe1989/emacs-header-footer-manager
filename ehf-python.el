@@ -1,27 +1,16 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-23 05:39:32>
+;;; Timestamp: <2025-05-03 15:35:34>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+
 
 (require 'projectile)
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
-
-;; (defcustom --ehf-python-header-template
-;;   "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n# Timestamp: \"%s (%s)\"\n# File: %s\n\nimport os\n\n__FILE__ = (\n    \"%s\"\n)\n\n__DIR__ = os.path.dirname(__FILE__)"
-;;   "Header template for Python files."
-;;   :type 'string
-;;   :group 'ehf)
-
-;; (defcustom --ehf-python-header-pattern
-;;   "\\(^#!/usr/bin/env python3\n# -\\*- coding: utf-8 -\\*-\n# Timestamp: \".* (.*)\"\n# File: .*\n\nimport os\n\n__FILE__ = (\n    \".*\"\n)\n\n__DIR__ = os.path.dirname(__FILE__)\n\n__FILE__ = \".*\"\n\n__DIR__ = os.path.dirname(__FILE__)$\\)"
-;;   "Header pattern for Python files."
-;;   :type 'string
-;;   :group 'ehf)
 
 (defcustom --ehf-python-header-template
   "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-
@@ -54,6 +43,14 @@ __DIR__ = os.path.dirname(__FILE__)
 
 __FILE__ = \".*\"
 
+#!/usr/bin/env python3
+
+# -\\*- coding: utf-8 -\\*-
+
+# Time-stamp: \".* (.*)\"
+
+# File: .*.py
+
 # ----------------------------------------$\\)"
   "Header pattern for Python files."
   :type 'string
@@ -63,13 +60,13 @@ __FILE__ = \".*\"
 ;; ----------------------------------------
 
 (defcustom --ehf-python-footer-template
-  "# EOF"
+  "# EOF\n"
   "Footer template for Python files."
   :type 'string
   :group 'ehf)
 
 (defcustom --ehf-python-footer-pattern
-  "\\(^# EOF$\\)"
+  "\\(^# EOF\n$\\)"
   "Footer pattern for Python files."
   :type 'string
   :group 'ehf)
@@ -136,6 +133,7 @@ __FILE__ = \".*\"
    #'--ehf-python-format-footer
    file-path
    n-newlines))
+
 
 (provide 'ehf-python)
 
