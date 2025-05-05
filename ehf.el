@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 13:49:29>
+;;; Timestamp: <2025-04-26 05:50:27>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+
 
 ;; Add to load path
 (add-to-list 'load-path
@@ -11,6 +12,7 @@
               (or load-file-name buffer-file-name)))
 
 ;; Core dependencies first
+(require 'ehf-utils)
 (require 'ehf-route-ext)
 (require 'ehf-variables)
 (require 'ehf-base)
@@ -31,6 +33,7 @@
 
 ;; Additional features
 (require 'ehf-dired)
+
 
 (provide 'ehf)
 
