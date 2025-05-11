@@ -32,25 +32,12 @@ __DIR__ = os.path.dirname(__FILE__)
 # -\\*- coding: utf-8 -\\*-
 # Timestamp: \".* (.*)\"
 # File: .*
-
+# ----------------------------------------
 import os
-
 __FILE__ = (
     \".*\"
 )
-
 __DIR__ = os.path.dirname(__FILE__)
-
-__FILE__ = \".*\"
-
-#!/usr/bin/env python3
-
-# -\\*- coding: utf-8 -\\*-
-
-# Time-stamp: \".* (.*)\"
-
-# File: .*.py
-
 # ----------------------------------------$\\)"
   "Header pattern for Python files."
   :type 'string

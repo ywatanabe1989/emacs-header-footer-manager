@@ -23,18 +23,10 @@ THIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"
   :group 'ehf)
 
 (defcustom --ehf-source-header-pattern
-  "\\(^#!/bin/.*sh
-
+  "\\(^#!/bin/bash
 # -\\*- coding: utf-8 -\\*-
-
 # Timestamp: \".* (.*)\"
-
 # File: .*
-
-THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"
-
-# For removing legacy headers
-# ----------------------------------------
 
 THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"$\\)"
   "Header pattern for shell source files."

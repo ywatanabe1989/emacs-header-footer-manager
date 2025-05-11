@@ -16,6 +16,9 @@ For example, yml -> yaml, bash -> sh"
      ;; Handle specific filenames without extensions
      ((member file-name ehf-source-filenames)
       "source")
+     ;; Special case: "source" extension is already the canonical form
+     ((equal ext "source")
+      "source")
      ;; Shell scripts
      ((member ext ehf-shell-extensions)
       "sh")

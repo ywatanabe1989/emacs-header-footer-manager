@@ -1,0 +1,1 @@
+/home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/.ELISP-TEST-REPORT-20250511-143719-17-PASSED-17-TOTAL-100-PERCENT.org

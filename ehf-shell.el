@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-26 05:52:05>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-shell.el
+;;; Timestamp: <2025-05-09 20:26:47>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-shell.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
 
@@ -34,8 +34,13 @@
 
 THIS_DIR=\"$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)\"
 LOG_PATH=\"$THIS_DIR/.\$(basename $0).log\"
-touch \"$LOG_PATH\" >/dev/null 2>&1
-"
+echo > \"$LOG_PATH\"
+
+GREEN='\\033[0;32m'
+YELLOW='\\033[0;33m'
+RED='\\033[0;31m'
+NC='\\033[0m' # No Color
+# ---------------------------------------"
   "Header template for shell script files."
   :type 'string
   :group 'ehf)
@@ -55,35 +60,27 @@ touch \"$LOG_PATH\" >/dev/null 2>&1
 
 (defcustom --ehf-shell-header-pattern
   "\\(^#!/bin/.*sh
-
 # -\\*- coding: utf-8 -\\*-
-
 # Timestamp: \".* (.*)\"
-
 # File: .*
 
-THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"
-
-LOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"
-
-touch \"$LOG_PATH\" >/dev/null 2>\\&1
-
-# For removing legacy headers
-# ----------------------------------------
-
-THIS_DIR=\"\\$(cd \\$(dirname \\${BASH_SOURCE\\[\\0\\]}) \\&\\& pwd)\"
+THIS_DIR=\"\\$(cd \\$(dirname \\${BASH_SOURCE\\[0\\]}) \\&\\& pwd)\"
 
 LOG_PATH=\"\\$THIS_DIR/.\\$(basename \\$0).log\"
 
-THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[\\0\\]}\")\" \\&\\& pwd)\"
+echo > \"\\$LOG_PATH\"
 
-LOG_PATH=\"\\$THIS_DIR/.\\$(basename \"\\$0\").log\"
+GREEN='\\\\033\\[0;32m'
 
-LOG_PATH=\".\\$0.log\"
+YELLOW='\\\\033\\[0;33m'
 
-LOG_PATH=\"$0.log\"
+RED='\\\\033\\[0;31m'
 
-touch \"\\$LOG_PATH\"$\\)"
+NC='\\\\033\\[0m' # No Color
+
+# ---------------------------------------
+
+touch \"\\$LOG_PATH\" >/dev/null 2>\\&1$\\)"
   "Header pattern for shell script files."
   :type 'string
   :group 'ehf)

@@ -18,8 +18,8 @@
          (buffer-file-name
           (format "/tmp/test-file.%s" ext)))
       (should
-       (string-match-p--ehf-tex-header-pattern
-        (--ehf-tex-format-header test-path))))))
+       (string-match-p --ehf-tex-header-pattern
+                      (--ehf-tex-format-header test-path))))))
 
 (ert-deftest test-ehf-tex-format-footer
     ()

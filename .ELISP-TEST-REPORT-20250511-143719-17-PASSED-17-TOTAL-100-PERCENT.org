@@ -1,0 +1,120 @@
+#+TITLE: Elisp Test Report
+#+DATE: Sun May 11 02:37:19 PM AEST 2025
+#+AUTHOR: elisp-test unified runner (mode: parallel-gnu)
+
+* Test Results Summary
+
+** Summary
+
+- Test files processed: 17
+- Passed: 17
+- Failed: 0
+- Success Rate: 100.0%
+
+** Test Details
+
+*** Passed Tests
+
+- test-ehf-base.el
+  - Functions:
+    - test-ehf-base-with-buffer-insert
+    - test-ehf-base-insert-header-empty
+    - test-ehf-base-insert-header-content
+    - test-ehf-base-insert-footer-empty
+    - test-ehf-base-insert-footer-content
+    - test-ehf-base-remove-headers-match
+    - test-ehf-base-remove-footers-match
+- test-ehf-dired.el
+  - Functions:
+    - test-ehf-dired-update-header-footer
+- test-ehf-elisp.el
+  - Functions:
+    - test-ehf-elisp-format-header
+    - test-ehf-elisp-format-footer
+    - test-ehf-elisp-update-header-and-footer
+- test-ehf.el
+  - Functions:
+    - test-ehf-base-loadable
+    - test-ehf-variables-loadable
+    - test-ehf-registry-loadable
+    - test-ehf-elisp-loadable
+    - test-ehf-markdown-loadable
+    - test-ehf-org-loadable
+    - test-ehf-python-loadable
+    - test-ehf-shell-loadable
+    - test-ehf-tex-loadable
+    - test-ehf-yaml-loadable
+    - test-ehf-update-header-and-footer-loadable
+    - test-ehf-dired-loadable
+    - test-ehf-route-ext-loadable
+- test-ehf-hook.el
+  - Functions:
+    - test-ehf-hook-direct-call
+    - test-ehf-hook-before-save-hook
+    - test-ehf-hook-global-setup
+    - test-ehf-hook-function-call-directly
+- test-ehf-markdown.el
+  - Functions:
+    - test-ehf-markdown-format-header
+    - test-ehf-markdown-format-footer
+    - test-ehf-markdown-update-header-and-footer
+- test-ehf-org.el
+  - Functions:
+    - test-ehf-org-format-header
+    - test-ehf-org-format-footer
+    - test-ehf-org-update-header-and-footer
+- test-ehf-python.el
+  - Functions:
+    - test-ehf-python-format-header
+    - test-ehf-python-format-footer
+    - test-ehf-python-update-header-and-footer
+- test-ehf-registry.el
+  - Functions:
+    - test-ehf-registry-register-file
+    - test-ehf-registry-unregister-file
+    - test-ehf-registry-toggle-file
+- test-ehf-route-ext.el
+  - Functions:
+    - test-ehf-route-ext-shell
+    - test-ehf-route-ext-source
+    - test-ehf-route-ext-yaml
+    - test-ehf-route-ext-tex
+    - test-ehf-route-ext-web
+    - test-ehf-route-ext-cpp
+    - test-ehf-route-ext-js
+    - test-ehf-route-ext-ts
+    - test-ehf-route-ext-other
+    - test-ehf-route-ext-unknown
+- test-ehf-shell.el
+  - Functions:
+    - test-ehf-shell-format-header
+    - test-ehf-shell-format-footer
+    - test-ehf-shell-update-header-and-footer
+- test-ehf-source.el
+  - Functions:
+    - test-ehf-source-format-header
+    - test-ehf-source-format-footer
+    - test-ehf-source-update-header-and-footer
+- test-ehf-tex.el
+  - Functions:
+    - test-ehf-tex-format-header
+    - test-ehf-tex-format-footer
+    - test-ehf-tex-update-header-and-footer
+- test-ehf-update-header-and-footer.el
+  - Functions:
+    - test-ehf-update-header-and-footer-excluded-file
+- test-ehf-variables.el
+  - Functions:
+    - test-ehf-exclude-files-exists
+    - test-ehf-exclude-files-is-list
+- test-ehf-yaml.el
+  - Functions:
+    - test-ehf-yaml-format-header
+    - test-ehf-yaml-format-footer
+    - test-ehf-yaml-update-header-and-footer
+- test-ehf-yml.el
+  - Functions:
+    - test-ehf-yml-header-format
+    - test-ehf-yml-footer-format
+    - test-ehf-yml-extension-check-yml
+
