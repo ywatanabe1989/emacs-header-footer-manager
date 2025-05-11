@@ -16,10 +16,13 @@
         ((test-path
           (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/tmp/test-file.%s" ext)))
+          (format "/tmp/test-file.%s" ext))
+         (header (--ehf-tex-format-header test-path)))
+      ;; Print the pattern and header for debugging
+      (message "TeX Header Pattern:\n%s" --ehf-tex-header-pattern)
+      (message "Generated Header:\n%s" header)
       (should
-       (string-match-p --ehf-tex-header-pattern
-                      (--ehf-tex-format-header test-path))))))
+       (string-match-p --ehf-tex-header-pattern header)))))
 
 (ert-deftest test-ehf-tex-format-footer
     ()

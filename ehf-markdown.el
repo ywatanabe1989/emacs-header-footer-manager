@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-15 15:44:01>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-markdown.el
+;;; Timestamp: <2025-05-11 15:17:29>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-markdown.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+
 
 (require 'ehf-base)
 
@@ -72,6 +73,7 @@
    #'--ehf-markdown-format-footer
    file-path
    n-newlines))
+
 
 (provide 'ehf-markdown)
 

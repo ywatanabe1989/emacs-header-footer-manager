@@ -16,10 +16,13 @@
         ((test-path
           (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/tmp/test-file.%s" ext)))
+          (format "/tmp/test-file.%s" ext))
+         (header (--ehf-python-format-header test-path)))
+      ;; Print the pattern and header for debugging
+      (message "Python Header Pattern:\n%s" --ehf-python-header-pattern)
+      (message "Generated Header:\n%s" header)
       (should
-       (string-match-p --ehf-python-header-pattern
-                       (--ehf-python-format-header test-path))))))
+       (string-match-p --ehf-python-header-pattern header)))))
 
 (ert-deftest test-ehf-python-format-footer
     ()

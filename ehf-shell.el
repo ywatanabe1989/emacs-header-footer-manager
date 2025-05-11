@@ -1,6 +1,6 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-05-09 20:26:47>
+;;; Timestamp: <2025-05-11 15:16:59>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-shell.el
 
 ;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
@@ -59,9 +59,12 @@ NC='\\033[0m' # No Color
 ;;   :group 'ehf)
 
 (defcustom --ehf-shell-header-pattern
-  "\\(^#!/bin/.*sh
+  "\\(^#!/bin/bash
+
 # -\\*- coding: utf-8 -\\*-
+
 # Timestamp: \".* (.*)\"
+
 # File: .*
 
 THIS_DIR=\"\\$(cd \\$(dirname \\${BASH_SOURCE\\[0\\]}) \\&\\& pwd)\"
@@ -77,10 +80,7 @@ YELLOW='\\\\033\\[0;33m'
 RED='\\\\033\\[0;31m'
 
 NC='\\\\033\\[0m' # No Color
-
-# ---------------------------------------
-
-touch \"\\$LOG_PATH\" >/dev/null 2>\\&1$\\)"
+# ---------------------------------------$\\)"
   "Header pattern for shell script files."
   :type 'string
   :group 'ehf)

@@ -16,10 +16,13 @@
         ((test-path
           (format "/tmp/test-file.%s" ext))
          (buffer-file-name
-          (format "/tmp/test-file.%s" ext)))
+          (format "/tmp/test-file.%s" ext))
+         (header (--ehf-shell-format-header test-path)))
+      ;; Print the pattern and header for debugging
+      (message "Shell Header Pattern:\n%s" --ehf-shell-header-pattern)
+      (message "Generated Header:\n%s" header)
       (should
-       (string-match-p --ehf-shell-header-pattern
-                       (--ehf-shell-format-header test-path))))))
+       (string-match-p --ehf-shell-header-pattern header)))))
 
 (ert-deftest test-ehf-shell-format-footer
     ()
