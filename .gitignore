@@ -626,3 +626,9 @@ flycheck_*.el
 !.gitkeep
 
 **/.claude/settings.local.json
+
+### Project specific ignores
+# Test reports and temporary files
+.ELISP-TEST-REPORT-*
+.temp_test_outputs/
+ELISP-TEST-REPORT-*
