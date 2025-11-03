@@ -1,14 +1,38 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-17 08:01:17>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-source.el
+;;; Timestamp: <2025-11-03 14:45:51>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-source.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
+
 
 (require 'ehf-base)
 
 ;; Header Variables
 ;; ----------------------------------------
+
+;; (defcustom --ehf-source-header-template
+;;   "#!/bin/bash
+;; # -*- coding: utf-8 -*-
+;; # Timestamp: \"%s (%s)\"
+;; # File: %s
+
+;; THIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"
+;; "
+;;   "Header template for shell source files."
+;;   :type 'string
+;;   :group 'ehf)
+
+;; (defcustom --ehf-source-header-pattern
+;;   "\\(^#!/bin/bash
+;; # -\\*- coding: utf-8 -\\*-
+;; # Timestamp: \".* (.*)\"
+;; # File: .*
+
+;; THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"\\)?$"
+;;   "Header pattern for shell source files."
+;;   :type 'string
+;;   :group 'ehf)
 
 (defcustom --ehf-source-header-template
   "#!/bin/bash
@@ -17,19 +41,26 @@
 # File: %s
 
 THIS_DIR=\"$(cd \"$(dirname \"${BASH_SOURCE[0]}\")\" && pwd)\"
-"
-  "Header template for shell source files."
+# ---------------------------------------"
+  "Header template for shell script files."
   :type 'string
   :group 'ehf)
 
 (defcustom --ehf-source-header-pattern
   "\\(^#!/bin/bash
+
 # -\\*- coding: utf-8 -\\*-
+
 # Timestamp: \".* (.*)\"
+
 # File: .*
 
-THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"\\)?$"
-  "Header pattern for shell source files."
+THIS_DIR=\"$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"
+
+THIS_DIR=\"\\$(cd \\$(dirname \\${BASH_SOURCE\\[0\\]}) \\&\\& pwd)\"
+
+# ---------------------------------------$\\)"
+  "Header pattern for shell script files."
   :type 'string
   :group 'ehf)
 
@@ -70,26 +101,39 @@ THIS_DIR=\"\\$(cd \"\\$(dirname \"\\${BASH_SOURCE\\[0\\]}\")\" \\&\\& pwd)\"\\)?
 ;; Updater
 ;; ----------------------------------------
 
+;; (defun --ehf-source-update-header-and-footer
+;;     (&optional file-path n-newlines)
+;;   "Update header and footer in Source files."
+;;   (let*
+;;       ((path
+;;         (or file-path buffer-file-name)))
+;;     (--ehf-base-update-header-and-footer
+;;      "source"
+;;      --ehf-source-header-template
+;;      --ehf-source-header-pattern
+;;      #'--ehf-source-format-header
+;;      --ehf-source-footer-template
+;;      --ehf-source-footer-pattern
+;;      #'--ehf-source-format-footer
+;;      file-path
+;;      n-newlines)))
+
 (defun --ehf-source-update-header-and-footer
     (&optional file-path n-newlines)
   "Update header and footer in Source files."
-  (let*
-      ((path
-        (or file-path buffer-file-name)))
-    (--ehf-base-update-header-and-footer
-     "source"
-     --ehf-source-header-template
-     --ehf-source-header-pattern
-     #'--ehf-source-format-header
-     --ehf-source-footer-template
-     --ehf-source-footer-pattern
-     #'--ehf-source-format-footer
-     file-path
-     n-newlines)))
+  (let ((path (or file-path buffer-file-name)))
+    (when (--ehf-utils-should-process-file path 'source)
+      (--ehf-base-update-header-and-footer
+       "source" --ehf-source-header-template
+       --ehf-source-header-pattern
+       #'--ehf-source-format-header --ehf-source-footer-template
+       --ehf-source-footer-pattern #'--ehf-source-format-footer
+       file-path n-newlines))))
 
 ;; ;; ;; Before Save Hook
 ;; ;; ;; ----------------------------------------
 ;; ;; (add-hook 'before-save-hook #'--ehf-source-update-header-and-footer)
+
 
 (provide 'ehf-source)
 

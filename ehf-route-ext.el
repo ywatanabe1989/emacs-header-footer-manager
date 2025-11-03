@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-17 07:09:27>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-route-ext.el
+;;; Timestamp: <2025-11-03 14:45:50>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-route-ext.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
+
 
 ;; Main Function
 ;; ----------------------------------------
@@ -110,6 +111,7 @@ For example, yml -> yaml, bash -> sh"
 ;; ;; Before Save Hook
 ;; ;; ----------------------------------------
 ;; (add-hook 'before-save-hook #'ehf-update-header-and-footer)
+
 
 (provide 'ehf-route-ext)
 

@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 13:56:36>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-yaml.el
+;;; Timestamp: <2025-11-03 14:45:54>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-yaml.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
+
 
 (require 'ehf-base)
 
@@ -44,13 +45,15 @@
     (&optional file-path)
   "Format YAML header for FILE-PATH or current buffer's file."
   (let
-      ((path
-        (or file-path buffer-file-name)))
+      ;; ((path
+      ;;   (or file-path buffer-file-name)))
+      ((git-path-dot
+        (--ehf-utils-path-to-git-dot-path file-path)))
     (format --ehf-yaml-header-template
             (format-time-string "%Y-%m-%d %H:%M:%S")
             (user-login-name)
-            path)))
-
+            git-path-dot)))
+;; path)))
 (defun --ehf-yaml-format-footer
     (&optional file-path)
   "Format YAML footer for FILE-PATH or current buffer's file."
@@ -59,23 +62,35 @@
 ;; Updater
 ;; ----------------------------------------
 
+;; (defun --ehf-yaml-update-header-and-footer
+;;     (&optional file-path n-newlines)
+;;   "Update header and footer in Yaml files."
+;;   (--ehf-base-update-header-and-footer
+;;    "yaml"
+;;    --ehf-yaml-header-template
+;;    --ehf-yaml-header-pattern
+;;    #'--ehf-yaml-format-header
+;;    --ehf-yaml-footer-template
+;;    --ehf-yaml-footer-pattern
+;;    #'--ehf-yaml-format-footer
+;;    file-path
+;;    n-newlines))
+
 (defun --ehf-yaml-update-header-and-footer
     (&optional file-path n-newlines)
   "Update header and footer in Yaml files."
-  (--ehf-base-update-header-and-footer
-   "yaml"
-   --ehf-yaml-header-template
-   --ehf-yaml-header-pattern
-   #'--ehf-yaml-format-header
-   --ehf-yaml-footer-template
-   --ehf-yaml-footer-pattern
-   #'--ehf-yaml-format-footer
-   file-path
-   n-newlines))
+  (let ((path (or file-path buffer-file-name)))
+    (when (--ehf-utils-should-process-file path 'yaml)
+      (--ehf-base-update-header-and-footer
+       "yaml" --ehf-yaml-header-template --ehf-yaml-header-pattern
+       #'--ehf-yaml-format-header --ehf-yaml-footer-template
+       --ehf-yaml-footer-pattern #'--ehf-yaml-format-footer
+       file-path n-newlines))))
 
 ;; ;; Before Save Hook
 ;; ;; ----------------------------------------
 ;; (add-hook 'before-save-hook #'--ehf-yaml-update-header-and-footer)
+
 
 (provide 'ehf-yaml)
 

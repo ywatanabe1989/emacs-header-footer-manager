@@ -3,7 +3,7 @@
 ;;; Timestamp: <2025-03-14 14:50:31>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/tests/test-ehf-tex.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 (require 'ert)
 (require 'ehf-tex)

@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 14:46:52>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-tex.el
+;;; Timestamp: <2025-11-03 14:45:52>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-tex.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
+
 
 (require 'ehf-base)
 
@@ -69,23 +70,35 @@
 ;; Updater
 ;; ----------------------------------------
 
+;; (defun --ehf-tex-update-header-and-footer
+;;     (&optional file-path n-newlines)
+;;   "Update header and footer in Tex files."
+;;   (--ehf-base-update-header-and-footer
+;;    "tex"
+;;    --ehf-tex-header-template
+;;    --ehf-tex-header-pattern
+;;    #'--ehf-tex-format-header
+;;    --ehf-tex-footer-template
+;;    --ehf-tex-footer-pattern
+;;    #'--ehf-tex-format-footer
+;;    file-path
+;;    n-newlines))
+
 (defun --ehf-tex-update-header-and-footer
     (&optional file-path n-newlines)
   "Update header and footer in Tex files."
-  (--ehf-base-update-header-and-footer
-   "tex"
-   --ehf-tex-header-template
-   --ehf-tex-header-pattern
-   #'--ehf-tex-format-header
-   --ehf-tex-footer-template
-   --ehf-tex-footer-pattern
-   #'--ehf-tex-format-footer
-   file-path
-   n-newlines))
+  (let ((path (or file-path buffer-file-name)))
+    (when (--ehf-utils-should-process-file path 'tex)
+      (--ehf-base-update-header-and-footer
+       "tex" --ehf-tex-header-template --ehf-tex-header-pattern
+       #'--ehf-tex-format-header --ehf-tex-footer-template
+       --ehf-tex-footer-pattern #'--ehf-tex-format-footer
+       file-path n-newlines))))
 
 ;; ;; Before Save Hook
 ;; ;; ----------------------------------------
 ;; (add-hook 'before-save-hook #'--ehf-tex-update-header-and-footer)
+
 
 (provide 'ehf-tex)
 

@@ -3,7 +3,7 @@
 ;;; Timestamp: <2025-04-24 14:30:19>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-elisp.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 (require 'ehf-base)
 
@@ -11,7 +11,7 @@
 ;; ----------------------------------------
 
 (defcustom --ehf-elisp-header-template
-  ";;; -*- coding: utf-8; lexical-binding: t -*-\n;;; Author: %s\n;;; Timestamp: <%s>\n;;; File: %s\n\n;;; Copyright (C) %s Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)"
+  ";;; -*- coding: utf-8; lexical-binding: t -*-\n;;; Author: %s\n;;; Timestamp: <%s>\n;;; File: %s\n\n;;; Copyright (C) %s Yusuke Watanabe (ywatanabe@scitex.ai)"
   "Header template for Elisp files."
   :type 'string
   :group 'ehf)
@@ -94,24 +94,38 @@
 ;; Updater
 ;; ----------------------------------------
 
+;; (defun --ehf-elisp-update-header-and-footer
+;;     (&optional file-path n-newlines)
+;;   "Update header and footer in Elisp files."
+;;   (let* ((this-file   "ehf-elisp.el")
+;;          (actual-file (file-name-nondirectory
+;;                        (or load-file-name buffer-file-name))))
+;;     (when (not (string= actual-file this-file))
+;;       (let ((newlines-count (or n-newlines 2)))
+;;         (--ehf-base-update-header-and-footer
+;;          "el"
+;;          --ehf-elisp-header-template
+;;          --ehf-elisp-header-pattern
+;;          #'--ehf-elisp-format-header
+;;          --ehf-elisp-footer-template
+;;          --ehf-elisp-footer-pattern
+;;          #'--ehf-elisp-format-footer
+;;          actual-file
+;;          newlines-count)))))
+
 (defun --ehf-elisp-update-header-and-footer
     (&optional file-path n-newlines)
   "Update header and footer in Elisp files."
-  (let* ((this-file   "ehf-elisp.el")
-         (actual-file (file-name-nondirectory
-                       (or load-file-name buffer-file-name))))
-    (when (not (string= actual-file this-file))
-      (let ((newlines-count (or n-newlines 2)))
-        (--ehf-base-update-header-and-footer
-         "el"
-         --ehf-elisp-header-template
-         --ehf-elisp-header-pattern
-         #'--ehf-elisp-format-header
-         --ehf-elisp-footer-template
-         --ehf-elisp-footer-pattern
-         #'--ehf-elisp-format-footer
-         actual-file
-         newlines-count)))))
+  (let* ((path (or file-path buffer-file-name))
+         (this-file "ehf-elisp.el")
+         (actual-file (file-name-nondirectory path)))
+    (when (and (not (string= actual-file this-file))
+               (--ehf-utils-should-process-file path 'elisp))
+      (--ehf-base-update-header-and-footer
+       "el" --ehf-elisp-header-template --ehf-elisp-header-pattern
+       #'--ehf-elisp-format-header --ehf-elisp-footer-template
+       --ehf-elisp-footer-pattern #'--ehf-elisp-format-footer
+       file-path (or n-newlines 2)))))
 
 ;; ;; Before Save Hook
 ;; ;; ----------------------------------------

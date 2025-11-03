@@ -1,9 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-05-03 15:35:34>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-python.el
+;;; Timestamp: <2025-11-03 14:45:49>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-python.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 
 (require 'projectile)
@@ -17,6 +17,7 @@
 # Timestamp: \"%s (%s)\"
 # File: %s
 # ----------------------------------------
+from __future__ import annotations
 import os
 __FILE__ = (
     \"%s\"
@@ -29,15 +30,27 @@ __DIR__ = os.path.dirname(__FILE__)
 
 (defcustom --ehf-python-header-pattern
   "\\(^#!/usr/bin/env python3
+
 # -\\*- coding: utf-8 -\\*-
+
 # Timestamp: \".* (.*)\"
+
 # File: .*
+
 # ----------------------------------------
+
+from __future__ import annotations
+
 import os
+
 __FILE__ = (
-    \".*\"
+    \".*.py\"
 )
+
+__FILE__ = \".*.py\"
+
 __DIR__ = os.path.dirname(__FILE__)
+
 # ----------------------------------------$\\)"
   "Header pattern for Python files."
   :type 'string
@@ -107,19 +120,35 @@ __DIR__ = os.path.dirname(__FILE__)
 ;; Updater
 ;; ----------------------------------------
 
+;; (defun --ehf-python-update-header-and-footer
+;;     (&optional file-path n-newlines)
+;;   "Update header and footer in Python files."
+;;   (--ehf-base-update-header-and-footer
+;;    "py"
+;;    --ehf-python-header-template
+;;    --ehf-python-header-pattern
+;;    #'--ehf-python-format-header
+;;    --ehf-python-footer-template
+;;    --ehf-python-footer-pattern
+;;    #'--ehf-python-format-footer
+;;    file-path
+;;    n-newlines))
+
 (defun --ehf-python-update-header-and-footer
     (&optional file-path n-newlines)
   "Update header and footer in Python files."
-  (--ehf-base-update-header-and-footer
-   "py"
-   --ehf-python-header-template
-   --ehf-python-header-pattern
-   #'--ehf-python-format-header
-   --ehf-python-footer-template
-   --ehf-python-footer-pattern
-   #'--ehf-python-format-footer
-   file-path
-   n-newlines))
+  (let ((path (or file-path buffer-file-name)))
+    (when (--ehf-utils-should-process-file path 'python)
+      (--ehf-base-update-header-and-footer
+       "py"
+       --ehf-python-header-template
+       --ehf-python-header-pattern
+       #'--ehf-python-format-header
+       --ehf-python-footer-template
+       --ehf-python-footer-pattern
+       #'--ehf-python-format-footer
+       file-path
+       n-newlines))))
 
 
 (provide 'ehf-python)

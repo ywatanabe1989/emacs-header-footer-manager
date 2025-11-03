@@ -3,7 +3,7 @@
 ;;; Timestamp: <2025-03-14 13:49:40>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/examples/example.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 (FILE CONTENTS HERE)
 

@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-03-14 13:49:28>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-dired.el
+;;; Timestamp: <2025-11-03 14:45:46>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-dired.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
+
 
 (require 'ehf-update-header-and-footer)
 
@@ -40,6 +41,7 @@
 ;; (define-key dired-mode-map
 ;;             (kbd "H")
 ;;             'ehf-dired-do-update-header-footer)
+
 
 (provide 'ehf-dired)
 

@@ -1,9 +1,10 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-21 08:02:24>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-registry.el
+;;; Timestamp: <2025-11-03 14:45:49>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-registry.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
+
 
 ;; Ensure ehf-variables is loaded so ehf-exclude-files is defined
 (require 'ehf-variables)
@@ -104,6 +105,7 @@
 ;; Key Bindings (Example - uncomment if desired)
 ;; ----------------------------------------
 ;; (global-set-key (kbd "C-c <delete>") 'ehf-toggle-exclude-file)
+
 
 (provide 'ehf-registry)
 

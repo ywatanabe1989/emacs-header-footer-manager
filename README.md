@@ -1,7 +1,7 @@
 <!-- ---
-!-- Timestamp: 2025-04-18 12:31:15
+!-- Timestamp: 2025-11-03 14:45:58
 !-- Author: ywatanabe
-!-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/README.md
+!-- File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/README.md
 !-- --- -->
 
 # Emacs Header Footer Manager (EHF)
@@ -80,6 +80,6 @@ M-x ehf-unregister-exclude-file ; Remove from list
 
 ## Contact
 
-Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+Yusuke Watanabe (ywatanabe@scitex.ai)
 
 <!-- EOF -->

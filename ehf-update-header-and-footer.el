@@ -1,80 +1,123 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-04-24 14:03:43>
-;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-update-header-and-footer.el
+;;; Timestamp: <2025-09-02 06:39:11>
+;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-update-header-and-footer.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 (require 'ehf-route-ext)
 
 ;; Main Function
 ;; ----------------------------------------
 
-(defun ehf-update-header-and-footer
-    (&optional file-path n-newlines)
+(defun ehf-update-header-and-footer (&optional file-path n-newlines)
   "Update header and footer for FILE-PATH or current buffer.
 Files listed in `ehf-exclude-files' will be skipped."
   (interactive)
-  (save-excursion
-    (let*
-        ((path
-          (or file-path buffer-file-name)))
-      (when
-          (and path
-               (not
-                (member
-                 (expand-file-name path)
-                 ehf-exclude-files)))
-        (let*
-            ((ext
-              (file-name-extension path))
-             (routed-ext
-              (--ehf-route-ext ext)))
-          (cond
-           ((equal routed-ext "el")
-            (--ehf-elisp-update-header-and-footer file-path n-newlines))
-           ((equal routed-ext "md")
-            (--ehf-markdown-update-header-and-footer file-path
+  (let ((old-undo-list buffer-undo-list))
+    (save-excursion
+      (let* ((path (or file-path buffer-file-name)))
+        (when (and path
+                   (not
+                    (member (expand-file-name path) ehf-exclude-files)))
+          (let* ((ext (file-name-extension path))
+                 (routed-ext (--ehf-route-ext ext)))
+            (cond
+             ((equal routed-ext "el")
+              (--ehf-elisp-update-header-and-footer file-path
+                                                    n-newlines))
+             ((equal routed-ext "md")
+              (--ehf-markdown-update-header-and-footer file-path
+                                                       n-newlines))
+             ((equal routed-ext "org")
+              (--ehf-org-update-header-and-footer file-path n-newlines))
+             ((equal routed-ext "py")
+              (--ehf-python-update-header-and-footer file-path
                                                      n-newlines))
-           ((equal routed-ext "org")
-            (--ehf-org-update-header-and-footer file-path n-newlines))
-           ((equal routed-ext "py")
-            (--ehf-python-update-header-and-footer file-path
-                                                   n-newlines))
-           ((equal routed-ext "sh")
-            (--ehf-shell-update-header-and-footer file-path n-newlines))
-           ((equal routed-ext "source")
-            (--ehf-source-update-header-and-footer file-path
-                                                   n-newlines))
-           ((equal routed-ext "tex")
-            (--ehf-tex-update-header-and-footer file-path n-newlines))
-           ((or
-             (equal routed-ext "yaml")
-             (equal routed-ext "yml"))
-            (--ehf-yaml-update-header-and-footer file-path n-newlines))))))))
+             ((equal routed-ext "sh")
+              (--ehf-shell-update-header-and-footer file-path
+                                                    n-newlines))
+             ((equal routed-ext "source")
+              (--ehf-source-update-header-and-footer file-path
+                                                     n-newlines))
+             ((equal routed-ext "tex")
+              (--ehf-tex-update-header-and-footer file-path n-newlines))
+             ((or (equal routed-ext "yaml") (equal routed-ext "yml"))
+              (--ehf-yaml-update-header-and-footer file-path
+                                                   n-newlines)))))))
+    (setq buffer-undo-list old-undo-list)))
 
-(defun ehf-update-header-and-footer-external
-    (file-path &optional n-newlines)
-  "Update header and footer for external FILE-PATH and save."
-  (interactive)
-  (save-excursion
-    (when
-        (and file-path
-             (file-exists-p file-path)
-             (file-writable-p file-path))
-      (let*
-          ((existing-buf
-            (get-file-buffer file-path))
-           (buf
-            (or existing-buf
-                (find-file-noselect file-path))))
-        (with-current-buffer buf
-          (let
-              ((buffer-file-name file-path))
-            (ehf-update-header-and-footer file-path n-newlines)
-            (save-buffer))
-          (unless existing-buf
-            (kill-buffer)))))))
+;; (de ehf-update-headerd-footer
+;;     (&optional file-path n-newlines;   "Update hea and footer for FILE-PAor current buffer.
+;; Fs listed in `ehf-exclude-fi' will be skipped."
+;;   (interactive)
+;;   do-amalgamate-change-group
+;;    (let ((ber-undo-list buffundo-list))
+;;      (e-excursion
+;;        (let*
+;;            ((p
+;;              (or file-pabuffer-file-name)))
+;;          (when
+;;           (and path                   (not
+;;                 (member
+;;                     (expand-file-name path)
+;;                  ehf-exclude-files)))
+;;            (let*
+;;             ((ext
+;;                  (file-n-extension path))
+;;                 (routed-ext
+;;               (--ehf-route-ext ext)))
+;;              (cond
+;;               ((equaouted-ext "el")
+;;                (--ehfisp-update-header-and-footer file-path
+;;                                                   n-newlines))
+;;               ((el routed-ext "md")
+;;                (-f-markdown-update-header-and-footer file-path
+;;                                                      n-newlines))
+;;              equal routed-ext "org")
+;;             (--ehf-org-update-header-and-footer file-path
+;;                                                 n-newlines))
+;;               ((al routed-ext "py")
+;;                (--ehython-update-header-and-footer file-path
+;;                                                    n-newlines))
+;;               ((equaouted-ext "sh")
+;;                (--ehfell-update-header-and-footer file-path
+;;                                                   n-newlines))
+;;               ((el routed-ext "sourc
+;;                (--ehf-source-update-her-and-footer file-path
+;;                                                    n-newlines))
+;;            ((equal routed-ext "tex")
+;;                (--ehf-tex-update-header-anooter file-path
+;;                                                    n-newlines))
+;;               ((or
+;;                 (equal routed-ext "yaml")
+;;                 (equal routed-ext "yml"))
+;;                (--ehf-yaml-update-header-and-footer file-path
+;;                                                     n-newlines))))))))
+;;    (setq buffer-undo-list buffer-undo-list)))
+
+;; (defun ehf-update-header-and-footer-external
+;;     (file-path &optional n-newlines)
+;;   "Update header and footer for external FILE-PATH and save."
+;;   (interactive)
+;;   (save-excursion
+;;     (when
+;;         (and file-path
+;;              (file-exists-p file-path)
+;;              (file-writable-p file-path))
+;;       (let*
+;;           ((existing-buf
+;;             (get-file-buffer file-path))
+;;            (buf
+;;             (or existing-buf
+;;                 (find-file-noselect file-path))))
+;;         (with-current-buffer buf
+;;           (let
+;;               ((buffer-file-name file-path))
+;;             (ehf-update-header-and-footer file-path n-newlines)
+;;             (save-buffer))
+;;           (unless existing-buf
+;;             (kill-buffer)))))))
 
 ;; Base Functions
 ;; ----------------------------------------

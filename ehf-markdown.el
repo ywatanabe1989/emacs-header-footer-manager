@@ -1,9 +1,9 @@
 ;;; -*- coding: utf-8; lexical-binding: t -*-
 ;;; Author: ywatanabe
-;;; Timestamp: <2025-05-11 15:17:29>
+;;; Timestamp: <2025-11-03 14:45:47>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer-manager/ehf-markdown.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 
 (require 'ehf-base)
@@ -60,19 +60,31 @@
 ;; Updater
 ;; ----------------------------------------
 
+;; (defun --ehf-markdown-update-header-and-footer
+;;     (&optional file-path n-newlines)
+;;   "Update header and footer in Markdown files."
+;;   (--ehf-base-update-header-and-footer
+;;    "md"
+;;    --ehf-markdown-header-template
+;;    --ehf-markdown-header-pattern
+;;    #'--ehf-markdown-format-header
+;;    --ehf-markdown-footer-template
+;;    --ehf-markdown-footer-pattern
+;;    #'--ehf-markdown-format-footer
+;;    file-path
+;;    n-newlines))
+
 (defun --ehf-markdown-update-header-and-footer
     (&optional file-path n-newlines)
   "Update header and footer in Markdown files."
-  (--ehf-base-update-header-and-footer
-   "md"
-   --ehf-markdown-header-template
-   --ehf-markdown-header-pattern
-   #'--ehf-markdown-format-header
-   --ehf-markdown-footer-template
-   --ehf-markdown-footer-pattern
-   #'--ehf-markdown-format-footer
-   file-path
-   n-newlines))
+  (let ((path (or file-path buffer-file-name)))
+    (when (--ehf-utils-should-process-file path 'markdown)
+      (--ehf-base-update-header-and-footer
+       "md" --ehf-markdown-header-template
+       --ehf-markdown-header-pattern
+       #'--ehf-markdown-format-header --ehf-markdown-footer-template
+       --ehf-markdown-footer-pattern #'--ehf-markdown-format-footer
+       file-path n-newlines))))
 
 
 (provide 'ehf-markdown)

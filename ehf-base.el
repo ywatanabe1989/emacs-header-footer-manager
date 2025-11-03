@@ -3,7 +3,7 @@
 ;;; Timestamp: <2025-03-14 14:31:11>
 ;;; File: /home/ywatanabe/.emacs.d/lisp/emacs-header-footer/ehf-base.el
 
-;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@alumni.u-tokyo.ac.jp)
+;;; Copyright (C) 2025 Yusuke Watanabe (ywatanabe@scitex.ai)
 
 (require 'ehf-route-ext)
 
